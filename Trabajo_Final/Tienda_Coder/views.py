@@ -3,7 +3,7 @@ from Tienda_Coder.forms import *
 from models import *
 
 
-total = 0
+total = 1
 lista = ''
 
 

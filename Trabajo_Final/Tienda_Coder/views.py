@@ -18,21 +18,18 @@ def Agregar_Periferico(request, id, cantidad):
             precio = obj.precio
             nombre = obj.nombre
             marca = obj.marca
-        else:
-            pass
 
     if cantidad > 1:
         suma_total = precio * cantidad
-    elif cantidad < 1:
+        total += suma_total
+        lista += [nombre, marca, precio]
+
+    else:
         rta = 'No puede ser menos de 1'
         return render(request, '', {'rta': rta})
-    else:
-        pass
-
-    total += suma_total
-    lista += [nombre, marca, precio]
 
     return render(request, '', {'lista': lista, 'total': total})
+
 
 #--------------------------------------------------- PERIFERICOS ---------------------------------------------------#
 

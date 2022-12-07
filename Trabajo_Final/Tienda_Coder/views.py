@@ -3,32 +3,8 @@ from Tienda_Coder.forms import *
 from models import *
 
 
-total = 1
-lista = ''
-
-
 #--------------------------------------------------- CARRITO ---------------------------------------------------#
 
-
-def Agregar_Periferico(request, id, cantidad):
-    
-    for obj in Perifericos.objects.all():
-        
-        if obj.id == id:
-            precio = obj.precio
-            nombre = obj.nombre
-            marca = obj.marca
-
-    if cantidad > 1:
-        suma_total = precio * cantidad
-        total += suma_total
-        lista += [nombre, marca, precio]
-
-    else:
-        rta = 'No puede ser menos de 1'
-        return render(request, '', {'rta': rta})
-
-    return render(request, '', {'lista': lista, 'total': total})
 
 
 #--------------------------------------------------- PERIFERICOS ---------------------------------------------------#

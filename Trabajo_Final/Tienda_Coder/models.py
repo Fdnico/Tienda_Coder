@@ -25,7 +25,7 @@ class Perifericos(models.Model):
     def __str__(self):
         return self.nombre
 
-class Carrito(models.Model):
-    codigo_articulo = models.IntegerField()
-    cantidad = models.IntegerField()
-    suma_total = models.IntegerField()
+#class Carrito(models.Model):
+#    codigo_articulo = models.IntegerField()
+#    cantidad = models.IntegerField()
+#    suma_total = models.IntegerField()

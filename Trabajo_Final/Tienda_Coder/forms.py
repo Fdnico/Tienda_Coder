@@ -19,8 +19,8 @@ class Juegos_Form(forms.Form):
     precio = forms.IntegerField()
 
 
-class Carrito_Form(forms.Form):
-    nombre = forms.CharField()
-    codigo_articulo = forms.IntegerField()
-    cantidad = forms.IntegerField()
-    precio = forms.IntegerField()
+#class Carrito_Form(forms.Form):
+#    nombre = forms.CharField()
+#    codigo_articulo = forms.IntegerField()
+#    cantidad = forms.IntegerField()
+#    precio = forms.IntegerField()

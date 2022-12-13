@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from Tienda_Coder.forms import *
-from models import *
+from Tienda_Coder.models import *
 
 #--------------------------------------------------- CARRITO ---------------------------------------------------#
 

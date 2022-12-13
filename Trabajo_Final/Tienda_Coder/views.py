@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from Tienda_Coder.forms import *
 from Tienda_Coder.models import *
-
-#--------------------------------------------------- CARRITO ---------------------------------------------------#
-
+from django.contrib.auth.decorators import login_required
 
 
 #--------------------------------------------------- PERIFERICOS ---------------------------------------------------#

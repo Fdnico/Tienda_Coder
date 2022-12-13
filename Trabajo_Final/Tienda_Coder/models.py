@@ -1,6 +1,5 @@
 from django.db import models
 
-#Modelos a usar
 
 class Consolas(models.Model):
     nombre = models.CharField(max_length=30)

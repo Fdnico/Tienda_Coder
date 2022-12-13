@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import User
 from django.db import models
 
+
 class Perifericos_Form(forms.Form):
     nombre = forms.CharField()
     marca = forms.CharField()
@@ -20,13 +21,34 @@ class Juegos_Form(forms.Form):
     precio = forms.IntegerField()
 
 
-class Avatar(models.Model):
+class UserRegisterForm(UserCreationForm):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to='avatares', null='True', blank='True')
+    username = forms.CharField(label='User')
+    first_name = forms.CharField(label='Nombre')
+    last_name = forms.CharField(label='Apellido')
+    email = forms.EmailField(label='Correo Electronico')
+    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Confirmar contraseña', widget=forms.PasswordInput)
 
-#class Carrito_Form(forms.Form):
-#    nombre = forms.CharField()
-#    codigo_articulo = forms.IntegerField()
-#    cantidad = forms.IntegerField()
-#    precio = forms.IntegerField()
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+
+
+class UserEditForm(UserCreationForm):
+
+    first_name = forms.CharField(label='Nombre')
+    last_name = forms.CharField(label='Apellido')
+    email = forms.EmailField(label='Correo Electronico')
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput, required=False)
+    password2 = forms.CharField(label='Confirme el Password', widget=forms.PasswordInput, required=False)
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+        help_texts = {'email': 'Indica un correo electronico que utilices habitualmente', 'first_name': '', 'last_name': '', 'password': ''}
+
+
+class AvatarForm(forms.Form):
+    imagen = forms.ImageField()

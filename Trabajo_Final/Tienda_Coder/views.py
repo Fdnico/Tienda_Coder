@@ -35,7 +35,7 @@ def Resultado_Buscar_Producto(request):
             rta = {'nombre': nombre, 'marca': marca, 'precio': precio}
         else:
             rta = '1'
-    
+
     for obj in Consolas.objects.all():
         if obj.nombre == nombre:
             nombre = obj.nombre
@@ -64,11 +64,9 @@ def Resultado_Buscar_Producto(request):
     if rta == '1' or rta == '2' or rta == '3':
         error = 'Producto no encontrado!'
         return render(request, 'Tienda_Coder/index.hmtl', {'error': error})
-    
+
     else:
         return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'rta': rta, 'imagen': imagen_url})
-        
-    
 
 
 #--------------------------------------------------- PERIFERICOS ---------------------------------------------------#

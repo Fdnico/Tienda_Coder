@@ -25,7 +25,7 @@ def Vista_Perifericos(request):
 
     perifericos = Perifericos.objects.all()
 
-    return render(request, '', {'listado_perifericos': perifericos})
+    return render(request, 'Tienda_Coder/perifericos.html', {'listado_perifericos': perifericos})
 
 
 def Ver_Periferico(request):
@@ -34,7 +34,7 @@ def Ver_Periferico(request):
         nombre = request.GET['nombre_periferico']
         periferico = Perifericos.objects.filter(nombre__icontains = nombre)
 
-    return render(request, '')
+    return render(request, 'Tienda_Coder/periferico_ver.html')
 
 
 @user_passes_test (lambda u: u.is_superuser)
@@ -57,7 +57,7 @@ def Crear_Periferico(request):
     form = Perifericos_Form()
     contexto = {'form': form, 'errores': errores}
 
-    return render(request, '', contexto)
+    return render(request, 'Tienda_Coder/periferico_crear.html', contexto)
 
 
 def Borrar_Periferico(request, id):
@@ -65,7 +65,7 @@ def Borrar_Periferico(request, id):
     periferico = Perifericos.objects.get(id=id)
     periferico.delete()
 
-    return redirect('')
+    return redirect('perifericos')
 
 
 def Editar_Periferico(request, id):
@@ -83,17 +83,17 @@ def Editar_Periferico(request, id):
             periferico.precio = data['precio']
             periferico.save()
 
-            return redirect('')
+            return redirect('perifericos')
         else:
-            return render(request, '', {'form': form, 'errores': form.errors})
+            return render(request, 'Tienda_Coder/periferico_editar.html', {'form': form, 'errores': form.errors})
     else:
         form = Perifericos_Form(initial={'nombre': periferico.nombre, 'marca': periferico.marca, 'precio': periferico.precio})
-        return render(request, '', {'form': form, 'errores': ''})
+        return render(request, 'Tienda_Coder/periferico_editar.html', {'form': form, 'errores': ''})
 
 
 def Buscar_Periferico(request):
     
-    return render(request, '')
+    return render(request, 'Tienda_Coder/periferico_buscar.html')
 
 
 def Resultado_Buscar_Periferico(request):
@@ -102,11 +102,11 @@ def Resultado_Buscar_Periferico(request):
         nombre = request.GET['nombre_periferico'] 
         periferico = Perifericos.objects.filter(nombre__icontains = nombre)
 
-        return render(request, '', {'periferico': periferico})
+        return render(request, 'Tienda_Coder/periferico_resultado_buscar.html', {'periferico': periferico})
 
     else:
         rta = 'No enviaste datos!'
-        return render(request, '', {'rta': rta})
+        return render(request, 'Tienda_Coder/periferico_resultado_buscar.html', {'rta': rta})
 
 
 #--------------------------------------------------- CONSOLAS ---------------------------------------------------#
@@ -116,7 +116,7 @@ def Vista_Consolas(request):
 
     consola = Consolas.objects.all()
 
-    return render(request, '', {'listado_consolas': consola})
+    return render(request, 'Tienda_Coder/consolas.html', {'listado_consolas': consola})
 
 
 def Ver_Consola(request):
@@ -125,7 +125,7 @@ def Ver_Consola(request):
         nombre = request.GET['nombre_consola']
         consola = Consolas.objects.filter(nombre__icontains = nombre)
 
-    return render(request, '')
+    return render(request, 'Tienda_Coder/consola_ver.html')
 
 
 def Crear_Consola(request):
@@ -147,7 +147,7 @@ def Crear_Consola(request):
     form = Consolas_Form()
     contexto = {'form': form, 'errores': errores}
 
-    return render(request, '', contexto)
+    return render(request, 'Tienda_Coder/consola_crear.html', contexto)
 
 
 def Borrar_Consola(request, id):
@@ -155,7 +155,7 @@ def Borrar_Consola(request, id):
     consola = Consolas.objects.get(id=id)
     consola.delete()
 
-    return redirect('')
+    return redirect('consolas')
 
 
 def Editar_Consola(request, id):
@@ -173,17 +173,17 @@ def Editar_Consola(request, id):
             consola.precio = data['precio']
             consola.save()
 
-            return redirect('')
+            return redirect('consolas')
         else:
-            return render(request, '', {'form': form, 'errores': form.errors})
+            return render(request, 'Tienda_Coder/consola_editar.html', {'form': form, 'errores': form.errors})
     else:
         form = Consolas_Form(initial={'nombre': consola.nombre, 'marca': consola.marca, 'precio': consola.precio})
-        return render(request, '', {'form': form, 'errores': ''})
+        return render(request, 'Tienda_Coder/consola_editar.html', {'form': form, 'errores': ''})
 
 
 def Buscar_Consola(request):
     
-    return render(request, '')
+    return render(request, 'Tienda_Coder/consola_buscar.html')
 
 
 def Resultado_Buscar_Consola(request):
@@ -192,11 +192,11 @@ def Resultado_Buscar_Consola(request):
         nombre = request.GET['nombre_consola'] 
         consola = Consolas.objects.filter(nombre__icontains = nombre)
 
-        return render(request, '', {'consola': consola})
+        return render(request, 'Tienda_Coder/consola_resultado_buscar.html', {'consola': consola})
 
     else:
         rta = 'No enviaste datos!'
-        return render(request, '', {'rta': rta})
+        return render(request, 'Tienda_Coder/consola_resultado_buscar.html', {'rta': rta})
         
 
 #--------------------------------------------------- JUEGOS ---------------------------------------------------#
@@ -206,7 +206,7 @@ def Vista_Juegos(request):
 
     juego = Juegos.objects.all()
 
-    return render(request, '', {'listado_juegos': juego})
+    return render(request, 'Tienda_Coder/juegos.html', {'listado_juegos': juego})
 
 
 def Ver_Juego(request):
@@ -215,7 +215,7 @@ def Ver_Juego(request):
         nombre = request.GET['nombre_juego']
         juego = Juegos.objects.filter(nombre__icontains = nombre)
 
-    return render(request, '')
+    return render(request, 'Tienda_Coder/juego_ver.html')
 
 
 def Crear_Juego(request):
@@ -237,7 +237,7 @@ def Crear_Juego(request):
     form = Juegos_Form()
     contexto = {'form': form, 'errores': errores}
 
-    return render(request, '', contexto)
+    return render(request, 'Tienda_Coder/juego_crear.html', contexto)
 
 
 def Borrar_Juego(request, id):
@@ -245,7 +245,7 @@ def Borrar_Juego(request, id):
     juego = Juegos.objects.get(id=id)
     juego.delete()
 
-    return redirect('')
+    return redirect('juegos')
 
 
 def Editar_Juego(request, id):
@@ -262,17 +262,17 @@ def Editar_Juego(request, id):
             juego.precio = data['precio']
             juego.save()
 
-            return redirect('')
+            return redirect('juegos')
         else:
-            return render(request, '', {'form': form, 'errores': form.errors})
+            return render(request, 'Tienda_Coder/juego_editar.html', {'form': form, 'errores': form.errors})
     else:
         form = Juegos_Form(initial={'nombre': juego.nombre, 'precio': juego.precio})
-        return render(request, '', {'form': form, 'errores': ''})
+        return render(request, 'Tienda_Coder/juego_editar.html', {'form': form, 'errores': ''})
 
 
 def Buscar_Juego(request):
     
-    return render(request, '')
+    return render(request, 'Tienda_Coder/juego_buscar.html')
 
 
 def Resultado_Buscar_Juego(request):
@@ -281,11 +281,11 @@ def Resultado_Buscar_Juego(request):
         nombre = request.GET['nombre_juego'] 
         juego = Juegos.objects.filter(nombre__icontains = nombre)
 
-        return render(request, '', {'juego': juego})
+        return render(request, 'Tienda_Coder/juego_resultado_buscar.html', {'juego': juego})
 
     else:
         rta = 'No enviaste datos!'
-        return render(request, '', {'rta': rta})
+        return render(request, 'Tienda_Coder/juego_resultado_buscar.html', {'rta': rta})
 
 #--------------------------------------------------- USUARIOS ---------------------------------------------------#
 
@@ -305,13 +305,13 @@ def Iniciar_Sesion(request):
                 login(request, user)
                 return redirect('inicio')
             else:
-                return render(request, 'tcoder/login.html', {'form': formulario, 'errors': 'Credenciales Invalidas'})
+                return render(request, 'Tienda_Coder/login.html', {'form': formulario, 'errors': 'Credenciales Invalidas'})
         
         else:
-            return render(request, 'tcoder/login.html', {'form': formulario, 'errors': formulario.errors})
+            return render(request, 'Tienda_Coder/login.html', {'form': formulario, 'errors': formulario.errors})
 
     formulario = AuthenticationForm()
-    return render(request, 'tcoder/login.html', {'form': formulario})
+    return render(request, 'Tienda_Coder/login.html', {'form': formulario})
 
 
 def Registrar_Usuario(request):
@@ -323,10 +323,10 @@ def Registrar_Usuario(request):
             formulario.save()
             return redirect('inicio')
         else:
-            return render(request, 'tcoder/register.html', {'form': formulario, 'errors': formulario.errors})
+            return render(request, 'Tienda_Coder/register.html', {'form': formulario, 'errors': formulario.errors})
 
     formulario = UserRegisterForm()
-    return render(request, 'tcoder/register.html', {'form': formulario})
+    return render(request, 'Tienda_Coder/register.html', {'form': formulario})
 
 
 @login_required
@@ -347,12 +347,12 @@ def Editar_Perfil(request):
             usuario.save()
             return redirect('inicio')
         else:
-            return render(request, 'tcoder/editar_perfil.html', {'form': formulario, 'errors': formulario.errors})
+            return render(request, 'Tienda_Coder/editar_perfil.html', {'form': formulario, 'errors': formulario.errors})
     
     else:
         formulario = UserEditForm(initial = {'email': usuario.email, 'first_name': usuario.first_name, 'last_name': usuario.last_name})
         
-    return render(request, 'tcoder/editar_perfil.html', {'form': formulario})
+    return render(request, 'Tienda_Coder/editar_perfil.html', {'form': formulario})
 
 
 @login_required
@@ -371,7 +371,7 @@ def Agregar_Avatar(request):
 
             return redirect('inicio')
         else:
-            return render(request, 'tcoder/agregar_avatar.html', {'form': formulario, 'errors': formulario.errors })
+            return render(request, 'Tienda_Coder/agregar_avatar.html', {'form': formulario, 'errors': formulario.errors })
     formulario = AvatarForm()
 
-    return render(request, 'tcoder/agregar_avatar.html', {'form': formulario})
+    return render(request, 'Tienda_Coder/agregar_avatar.html', {'form': formulario})

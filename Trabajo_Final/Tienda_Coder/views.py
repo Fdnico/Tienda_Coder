@@ -18,6 +18,48 @@ def index(request):
     return render(request, 'Tienda_Coder/index.html', {'imagen_url': imagen_url})
 
 
+def Resultado_Buscar_Producto(request):
+
+    nombre = request.GET['nombre_producto']
+
+    for obj in Perifericos.objects.all():
+        if obj.nombre == nombre:
+            nombre = obj.nombre
+            marca = obj.marca
+            precio = obj.precio
+
+            rta = {'nombre': nombre, 'marca': marca, 'precio': precio}
+        else:
+            pass
+    
+    for obj in Consolas.objects.all():
+        if obj.nombre == nombre:
+            nombre = obj.nombre
+            marca = obj.marca
+            precio = obj.precio
+
+            rta = {'nombre': nombre, 'marca': marca, 'precio': precio}
+        else:
+            pass
+
+    for obj in Juegos.objects.all():
+        if obj.nombre == nombre:
+            nombre = obj.nombre
+            precio = obj.precio
+
+            rta = {'nombre': nombre, 'precio': precio}
+        else:
+            pass
+
+    if rta != '':
+        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'rta': rta})
+    
+    else:
+        error = 'Producto no encontrado!'
+        return render(request, 'Tienda_Coder/index.hmtl', {'error': error})
+    
+
+
 #--------------------------------------------------- PERIFERICOS ---------------------------------------------------#
 
 

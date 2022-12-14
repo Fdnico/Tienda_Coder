@@ -6,6 +6,19 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 
 
+
+def acerca_de(request):
+    if request.user.is_authenticated:
+        if Avatar.objects.filter(user= request.user.id).order_by('-id'):
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by('-id')[0]
+            imagen_url = imagen_model.imagen.url
+        else:
+            imagen_url = ''
+    else:
+        imagen_url = '' 
+    return render(request, 'Tienda_Coder/acerca_de.html', {'imagen_url': imagen_url})
+
+
 def index(request):
     if request.user.is_authenticated:
         if Avatar.objects.filter(user= request.user.id).order_by('-id'):

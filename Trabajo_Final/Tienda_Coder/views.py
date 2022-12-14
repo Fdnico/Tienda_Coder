@@ -30,7 +30,7 @@ def Resultado_Buscar_Producto(request):
 
             rta = {'nombre': nombre, 'marca': marca, 'precio': precio}
         else:
-            pass
+            rta = '1'
     
     for obj in Consolas.objects.all():
         if obj.nombre == nombre:
@@ -40,7 +40,7 @@ def Resultado_Buscar_Producto(request):
 
             rta = {'nombre': nombre, 'marca': marca, 'precio': precio}
         else:
-            pass
+            rta = '2'
 
     for obj in Juegos.objects.all():
         if obj.nombre == nombre:
@@ -49,14 +49,15 @@ def Resultado_Buscar_Producto(request):
 
             rta = {'nombre': nombre, 'precio': precio}
         else:
-            pass
+            rta = '3'
 
-    if rta != '':
-        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'rta': rta})
-    
-    else:
+    if rta == '1' or rta == '2' or rta == '3':
         error = 'Producto no encontrado!'
         return render(request, 'Tienda_Coder/index.hmtl', {'error': error})
+    
+    else:
+        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'rta': rta})
+        
     
 
 

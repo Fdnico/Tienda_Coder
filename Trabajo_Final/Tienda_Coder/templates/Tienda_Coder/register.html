@@ -9,5 +9,16 @@
 
 {% block contenido %}
 
+{% if errors %}
+    <p style="color: red">Errores en el registro de usuario: {{errors}}</p>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Registrar usuario</button>
+    <a style='text-align: center'; href='/Tienda_Coder/inicio/'/>Volver</a>
+</form>
 
 {% endblock %}

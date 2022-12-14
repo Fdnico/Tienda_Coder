@@ -25,7 +25,7 @@ class Juegos_Form(forms.Form):
 
 class UserRegisterForm(UserCreationForm):
 
-    username = forms.CharField(label='User')
+    username = forms.CharField(label='Usuario')
     first_name = forms.CharField(label='Nombre')
     last_name = forms.CharField(label='Apellido')
     email = forms.EmailField(label='Correo Electronico')

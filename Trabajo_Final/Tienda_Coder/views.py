@@ -24,9 +24,13 @@ def Resultado_Buscar_Producto(request):
 
     for obj in Perifericos.objects.all():
         if obj.nombre == nombre:
+            codigo = obj.id
             nombre = obj.nombre
             marca = obj.marca
             precio = obj.precio
+
+            imagen_model = Perifericos.objects.filter(codigo)
+            imagen_url = imagen_model.imagen.url
 
             rta = {'nombre': nombre, 'marca': marca, 'precio': precio}
         else:
@@ -38,6 +42,9 @@ def Resultado_Buscar_Producto(request):
             marca = obj.marca
             precio = obj.precio
 
+            imagen_model = Consolas.objects.filter(codigo)
+            imagen_url = imagen_model.imagen.url
+
             rta = {'nombre': nombre, 'marca': marca, 'precio': precio}
         else:
             rta = '2'
@@ -46,6 +53,9 @@ def Resultado_Buscar_Producto(request):
         if obj.nombre == nombre:
             nombre = obj.nombre
             precio = obj.precio
+
+            imagen_model = Juegos.objects.filter(codigo)
+            imagen_url = imagen_model.imagen.url
 
             rta = {'nombre': nombre, 'precio': precio}
         else:
@@ -56,7 +66,7 @@ def Resultado_Buscar_Producto(request):
         return render(request, 'Tienda_Coder/index.hmtl', {'error': error})
     
     else:
-        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'rta': rta})
+        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'rta': rta, 'imagen': imagen_url})
         
     
 

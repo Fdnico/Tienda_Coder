@@ -66,7 +66,7 @@ def Resultado_Buscar_Producto(request):
         return render(request, 'Tienda_Coder/index.hmtl', {'error': error})
     
     else:
-        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'rta': rta, 'imagen': imagen_url})
+        return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'rta': rta, 'imagen': imagen_url})
         
     
 

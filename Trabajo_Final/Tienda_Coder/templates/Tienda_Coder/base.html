@@ -39,7 +39,7 @@
                     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Buscar un producto..." aria-label="Buscar un producto..." aria-describedby="btnNavbarSearch" />
-                            <button class="btn btn-primary" id="btnNavbarSearch" type="button" backgroundimage ><i class="fa fa-search"></i></button>
+                            <button class="btn btn-primary" id="btnNavbarSearch" type="button" backgroundimage ><i class="fa fa-search" ></i></button>
                         </div>
                     </form>
                     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -52,12 +52,12 @@
                                 <li><a class="dropdown-item" href="/Tienda_Coder/login/">Ingresar</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="/Tienda_Coder/register/">Crear Usuario</a></li>
-                                {% if user.is_authenticated %}
+                                {% if request.user.is_authenticated %}
                                 <li><a class="dropdown-item" href="/Tienda_Coder/logout/">Cerrar sesión</a></li>
                                 {% endif %}
-                                {% if user.is_superuser %}
+                                {% if request.user.is_superuser %}
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="admin/">Panel de administrador</a></li>
+                                <li><a class="dropdown-item" href="/Tienda_Coder/admin/">Panel de administrador</a></li>
                                 {% endif %}
                             </ul>
                         </li>

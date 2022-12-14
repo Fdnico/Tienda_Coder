@@ -1,0 +1,15 @@
+{% extends 'Tienda_Coder/base.html' %}
+{% block contenido %}
+
+{% if errors %}
+    <p style="color: red">Errores en el inicio de sesion: {{errors}}</p>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Iniciar sesion</button>
+</form>
+
+{% endblock %}

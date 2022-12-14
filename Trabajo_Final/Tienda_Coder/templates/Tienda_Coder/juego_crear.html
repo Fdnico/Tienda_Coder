@@ -9,4 +9,16 @@
 
 {% block contenido %}
 <div class="container px-4 px-lg-5 mt-5"></div>
+
+<h1 style='text-align: center'>Agregar un Juego:</h1>
+<form style='text-align: center' action='/Tienda_Coder/juego_crear/' method='POST'>
+    {% csrf_token %}
+
+    {{formulario.as_p}}
+
+    <input type='submit' value='Cargar juego'>
+    <a href='/Tienda_Coder/juegos'/>Volver</a>
+</form>
+
+
 {% endblock %}

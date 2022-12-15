@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+#Ingresar modelos para manejar desde el panel de admin.
+
+admin.site.register(Consolas)
+admin.site.register(Juegos)
+admin.site.register(Perifericos)
+admin.site.register(Avatar)

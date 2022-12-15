@@ -8,5 +8,14 @@
 {% endblock %}
 
 {% block contenido %}
-<div class="container px-4 px-lg-5 mt-5"></div>
+
+{% if errores %}
+    <p style="color: red"> {{errores}} </p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Actualizar">
+</form>
 {% endblock %}

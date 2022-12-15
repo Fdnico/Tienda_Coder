@@ -4,5 +4,38 @@
 
 {% block titulo %}
                     <h1 class="display-4 fw-bolder">Tienda Coder</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Video juegos!</p>
+                    <p class="lead fw-normal text-white-50 mb-0">Videojuegos!</p>
+{% endblock %}
+
+{% block contenido %}
+
+{% if listado_juegos %}
+<p style="text-align: center">Estos son los juegos:</p>
+    <ul>
+    {% for juego in listado_juegos %}
+        <li>juego: {{juego}} <a href="{% url 'juego_editar' juego.id %}">Editar</a><a href="{% url 'juego_borrar' juego.id %}">⚠Borrar⚠</a> </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>En este momento no hay juegos en stock</p>
+{% endif %}
+
+{% if request.user.is_superuser %}
+
+<section class="features-icons bg-light text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <nav class="navbar navbar-light bg-light static-top">
+                    <div class="container">
+                        <a class="btn btn-primary" href="/Tienda_Coder/juego_crear/">Agregar videojuego</a>
+                    </div>
+                </nav>
+            </div>                    
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
 {% endblock %}

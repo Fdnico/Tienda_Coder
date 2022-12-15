@@ -6,3 +6,36 @@
                     <h1 class="display-4 fw-bolder">Tienda Coder</h1>
                     <p class="lead fw-normal text-white-50 mb-0">Consolas</p>
 {% endblock %}
+
+{% block contenido %}
+
+{% if listado_consolas %}
+<p style="text-align: center">Estas son las consolas:</p>
+    <ul>
+    {% for consola in listado_consolas %}
+        <li>consola: {{consola}} {{precio}} <a href="{% url 'consola_editar' consola.id %}">Editar</a><a href="{% url 'consola_borrar' consola.id %}">⚠Borrar⚠</a> </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>En este momento no hay consolas en stock</p>
+{% endif %}
+
+{% if request.user.is_superuser %}
+
+<section class="features-icons bg-light text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <nav class="navbar navbar-light bg-light static-top">
+                    <div class="container">
+                        <a class="btn btn-primary" href="/Tienda_Coder/consola_crear/">Agregar consola</a>
+                    </div>
+                </nav>
+            </div>                    
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+{% endblock %}

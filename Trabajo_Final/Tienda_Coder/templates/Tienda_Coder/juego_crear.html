@@ -4,17 +4,16 @@
 
 {% block titulo %}
                     <h1 class="display-4 fw-bolder">Tienda Coder</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Video juegos!</p>
+                    <p class="lead fw-normal text-white-50 mb-0">Videojuegos!</p>
 {% endblock %}
 
 {% block contenido %}
 <div class="container px-4 px-lg-5 mt-5"></div>
-
-<h1 style='text-align: center'>Agregar un Juego:</h1>
+<h1 style='text-align: center'>Agregar un Videojuego:</h1>
 <form style='text-align: center' action='/Tienda_Coder/juego_crear/' method='POST'>
     {% csrf_token %}
 
-    {{formulario.as_p}}
+    {{form.as_p}}
 
     <input type='submit' value='Cargar juego'>
     <a href='/Tienda_Coder/juegos'/>Volver</a>

@@ -76,6 +76,25 @@
   }
 }
 
+.fromularios {
+  margin-left: 35%;
+  margin-right: 40%;
+  margin-top: 2%;
+  box-sizing: content-box;
+  padding: 2%;
+  border: #000000;
+  text-align: end;
+  border-style: solid;
+}
+
+footer {
+  position:sticky;
+  bottom:0;
+  width: 100%;
+  height: 50px;
+  
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -331,6 +350,8 @@ th {
 
 label {
   display: inline-block;
+  
+  
 }
 
 button {
@@ -341,7 +362,22 @@ button:focus:not(:focus-visible) {
   outline: 0;
 }
 
-input,
+input{
+  margin-left: 5%;
+  float: right;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.botoncentrado{
+  padding-top: 5%;
+ 
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 button,
 select,
 optgroup,
@@ -7493,6 +7529,7 @@ textarea.form-control-lg {
 .py-5 {
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
+  
 }
 
 .pt-0 {

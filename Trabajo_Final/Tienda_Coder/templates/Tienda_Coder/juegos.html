@@ -13,7 +13,7 @@
 <p style="text-align: center">Estos son los juegos:</p>
     <ul>
     {% for juego in listado_juegos %}
-        <li>juego: {{juego}} <a href="{% url 'juego_editar' juego.id %}">Editar</a><a href="{% url 'juego_borrar' juego.id %}">⚠Borrar⚠</a> </li>
+        <li>juego: {{juego}} {% if request.user.is_superuser %} <a href="{% url 'juego_editar' juego.id %}">Editar</a><a href="{% url 'juego_borrar' juego.id %}">⚠Borrar⚠</a>{% endif %} </li>
     {% endfor %}
     </ul>
 {% else %}

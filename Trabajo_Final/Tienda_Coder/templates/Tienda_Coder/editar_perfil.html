@@ -13,11 +13,11 @@
 {% endif %}
 
 <form method="POST">
-
+    <div class="fromularios">
     {% csrf_token %}
     {{form.as_p}}
 
     <input type="submit" value="Guardar">
-
+</div>
 </form>
 {% endblock %}

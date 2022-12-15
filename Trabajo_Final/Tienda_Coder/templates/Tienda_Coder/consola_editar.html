@@ -14,9 +14,11 @@
 {% endif %}
 
 <form method="post">
+    <div class="fromularios">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Actualizar">
+</div>
 </form>
 
 {% endblock %}

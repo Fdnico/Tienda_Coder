@@ -11,12 +11,14 @@
 <div class="container px-4 px-lg-5 mt-5"></div>
 <h1 style='text-align: center'>Agregar una consola:</h1>
 <form style='text-align: center' action='/Tienda_Coder/consola_crear/' method='post'>
+    <div class="fromularios">
     {% csrf_token %}
 
     {{form.as_p}}
 
     <input type='submit' value='Cargar consola'>
     <a href='/Tienda_Coder/consolas/'>Volver</a>
+</div>
 </form>
 
 {% endblock %}

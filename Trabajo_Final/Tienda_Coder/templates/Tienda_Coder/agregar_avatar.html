@@ -15,12 +15,12 @@
 {% endif %}
 
 <form method="post" enctype="multipart/form-data">
-
+    <div class="fromularios">
     {% csrf_token %}
 
     {{ form.as_p }}
     <input type="submit" value="Guardar">
-
+    </div>
 </form>
 
 {% endblock %}

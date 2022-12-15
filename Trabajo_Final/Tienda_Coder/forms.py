@@ -7,6 +7,7 @@ class Perifericos_Form(forms.Form):
     nombre = forms.CharField()
     marca = forms.CharField()
     precio = forms.IntegerField()
+    imagen = forms.ImageField()
 
 
 class Consolas_Form(forms.Form):

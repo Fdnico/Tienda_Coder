@@ -112,7 +112,7 @@ def Crear_Periferico(request):
         if form.is_valid():
             data = form.cleaned_data
 
-            periferico = Perifericos(nombre=data['nombre'], marca=data['marca'], precio=data['precio'])
+            periferico = Perifericos(nombre=data['nombre'], marca=data['marca'], precio=data['precio'], imagen=['imagen'])
             periferico.save()
         
         else:

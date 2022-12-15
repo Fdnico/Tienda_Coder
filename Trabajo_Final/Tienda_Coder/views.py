@@ -358,10 +358,10 @@ def Iniciar_Sesion(request):
 
     errors = ''
     if request.method == 'POST':
-        formulario = AuthenticationForm(request, data=request.POST)
+        form = AuthenticationForm(request, data=request.POST)
 
-        if formulario.is_valid():
-            data = formulario.cleaned_data
+        if form.is_valid():
+            data = form.cleaned_data
 
             user = authenticate(username=data['username'], password=data['password'])
 
@@ -369,40 +369,39 @@ def Iniciar_Sesion(request):
                 login(request, user)
                 return redirect('inicio')
             else:
-                return render(request, 'Tienda_Coder/login.html', {'form': formulario, 'errors': 'Credenciales Invalidas'})
+                return render(request, 'Tienda_Coder/login.html', {'form': form, 'errors': 'Credenciales Invalidas'})
         
         else:
-            return render(request, 'Tienda_Coder/login.html', {'form': formulario, 'errors': formulario.errors})
+            return render(request, 'Tienda_Coder/login.html', {'form': form, 'errors': form.errors})
 
-    formulario = AuthenticationForm()
-    return render(request, 'Tienda_Coder/login.html', {'form': formulario})
+    form = AuthenticationForm()
+    return render(request, 'Tienda_Coder/login.html', {'form': form})
 
 
 def Registrar_Usuario(request):
 
     if request.method == 'POST':
-        formulario = UserRegisterForm(request.POST)
+        form = UserRegisterForm(request.POST)
 
-        if formulario.is_valid():
-            formulario.save()
+        if form.is_valid():
+            form.save()
             return redirect('inicio')
         else:
-            return render(request, 'Tienda_Coder/register.html', {'form': formulario, 'errors': formulario.errors})
+            return render(request, 'Tienda_Coder/register.html', {'form': form, 'errors': form.errors})
 
-    formulario = UserRegisterForm()
-    return render(request, 'Tienda_Coder/register.html', {'form': formulario})
+    form = UserRegisterForm()
+    return render(request, 'Tienda_Coder/register.html', {'form': form})
 
 
-@login_required
 def Editar_Perfil(request):
 
     usuario = request.user
 
     if request.method == 'POST':
-        formulario = UserEditForm(request.POST)
+        form = UserEditForm(request.POST)
         
-        if formulario.is_valid():
-            data = formulario.cleaned_data
+        if form.is_valid():
+            data = form.cleaned_data
 
             usuario.email = data['email']
             usuario.first_name = data['first_name']
@@ -411,22 +410,21 @@ def Editar_Perfil(request):
             usuario.save()
             return redirect('inicio')
         else:
-            return render(request, 'Tienda_Coder/editar_perfil.html', {'form': formulario, 'errors': formulario.errors})
+            return render(request, 'Tienda_Coder/editar_perfil.html', {'form': form, 'errors': form.errors})
     
     else:
-        formulario = UserEditForm(initial = {'email': usuario.email, 'first_name': usuario.first_name, 'last_name': usuario.last_name})
+        form = UserEditForm(initial = {'email': usuario.email, 'first_name': usuario.first_name, 'last_name': usuario.last_name})
         
-    return render(request, 'Tienda_Coder/editar_perfil.html', {'form': formulario})
+    return render(request, 'Tienda_Coder/editar_perfil.html', {'form': form})
 
 
-@login_required
 def Agregar_Avatar(request):
     
     if request.method == 'POST':
-        formulario = AvatarForm(request.POST, files=request.FILES)
+        form = AvatarForm(request.POST, files=request.FILES)
         print(request.FILES, request.POST)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
+        if form.is_valid():
+            data = form.cleaned_data
 
             usuario = request.user
 
@@ -435,7 +433,7 @@ def Agregar_Avatar(request):
 
             return redirect('inicio')
         else:
-            return render(request, 'Tienda_Coder/agregar_avatar.html', {'form': formulario, 'errors': formulario.errors })
-    formulario = AvatarForm()
+            return render(request, 'Tienda_Coder/agregar_avatar.html', {'form': form, 'errors': form.errors })
+    form = AvatarForm()
 
-    return render(request, 'Tienda_Coder/agregar_avatar.html', {'form': formulario})
+    return render(request, 'Tienda_Coder/agregar_avatar.html', {'form': form})

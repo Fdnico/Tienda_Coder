@@ -21,6 +21,13 @@ class Juegos_Form(forms.Form):
     precio = forms.IntegerField()
 
 
+class Comentarios_Form(forms.Form):
+    usuario = forms.CharField()
+    comentario = forms.CharField()
+    imagen = forms.ImageField()
+    fecha = forms.DateField()
+
+
 class UserRegisterForm(UserCreationForm):
 
     username = forms.CharField(label='Usuario')
@@ -52,5 +59,3 @@ class UserEditForm(UserCreationForm):
 
 class AvatarForm(forms.Form):
     imagen = forms.ImageField()
-
-

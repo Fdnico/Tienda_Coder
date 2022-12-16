@@ -38,7 +38,7 @@ class Avatar(models.Model):
 
 class Comentarios(models.Model):
     usuario = models.CharField(max_length=30)
-    imagen = imagen = models.ImageField(upload_to='imagen_periferico', null='True', blank='True')
+    imagen = imagen = models.ImageField(upload_to='imagen_comentario', null='True', blank='True')
     comentario = models.CharField(max_length= 150)
     fecha = models.DateTimeField(auto_now_add=True)
 

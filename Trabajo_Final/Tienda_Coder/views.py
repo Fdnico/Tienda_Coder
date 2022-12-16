@@ -446,3 +446,25 @@ def Vista_Comentarios(request):
     comentario = Comentarios.objects.all()
 
     return render(request, 'Tienda_Coder/index.html', {'listado_comentarios': comentario})
+
+
+def Comentario(request):
+
+    com = request.GET['comentario']
+
+    if Avatar.objects.filter(user=request.user.id).order_by('-id'):
+        imagen_model = Avatar.objects.filter(user=request.user.id).order_by('-id')[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ''
+
+    if request.method == 'GET':
+        form = Comentarios_Form(request.GET)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            
+            comentario = Comentarios(usuario=data[User], comentario=data[com], imagen=data[imagen_url])
+            comentario.save()
+
+    return render(request, 'Tienda_Coder/comentar.html', {'com': com})

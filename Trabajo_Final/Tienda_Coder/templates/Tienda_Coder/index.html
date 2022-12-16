@@ -219,21 +219,22 @@
             <form class="mb-4"><textarea class="form-control" rows="3" placeholder= "Inicia secion o registrate para comentar!"></textarea></form>
             {% endif %}
             <!-- MODELO DE COMENTARIO-->
-            <div class="d-flex">
-                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                <!--{% if not Comentarios.all %}
-
-                {% else %}-->
-                {% for comentario in Comentarios %}
-
+            
+                
+                {% for coment in listado_comentarios %}
+                <div class="d-flex">
+                    <div class="flex-shrink-0"><img class="rounded-circle" src="{{coment.imagen}}" alt="..." /></div>
                 <div class="ms-3">
-                    <div class="fw-bold"> {{comentario.usuario}} - {{comentario.fecha}} </div>
-                    {{comentario.comentario}}
+                    <div class="fw-bold"><h2> {{coment.usuario}} - {{coment.fecha}} </h2>  </div>
+                    <p> {{coment.comentario}} </p>
+                </div>
+                </div>
                 </div>
                 {% endfor %}
-                <!--{% endif %}-->
-            </div>
-        </div>
+
+                <!--https://dummyimage.com/50x50/ced4da/6c757d.jpg-->
+                
+            
     </div>
 </section>
 

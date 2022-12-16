@@ -8,9 +8,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('Tienda_Coder/admin/', admin.site.urls),
-    path('', index, name='inicio'),
-    path('Tienda_Coder/inicio/', index, name='inicio'),
+    #path('', index, name='inicio'),
+    #path('Tienda_Coder/inicio/', index, name='inicio'),
     path('Tienda_Coder/acerca_de/', acerca_de, name='acerca_de'),
+    path('',Vista_Comentarios, name='inicio'),
 
     path('Tienda_Coder/login/', Iniciar_Sesion, name='auth_login'),
     path('Tienda_Coder/register/', Registrar_Usuario, name='registrar_usuario'),
@@ -42,5 +43,7 @@ urlpatterns = [
     path('Tienda_Coder/juego_editar/<id>/', Editar_Juego, name='juego_editar'),
     path('Tienda_Coder/juego_buscar/', Buscar_Juego, name='juego_buscar'),
     ]
+
+
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

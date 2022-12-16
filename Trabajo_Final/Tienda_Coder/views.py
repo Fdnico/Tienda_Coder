@@ -438,3 +438,11 @@ def Agregar_Avatar(request):
     form = AvatarForm()
 
     return render(request, 'Tienda_Coder/agregar_avatar.html', {'form': form})
+
+
+
+def Vista_Comentarios(request):
+
+    comentario = Comentarios.objects.all()
+
+    return render(request, 'Tienda_Coder/index.html', {'listado_comentarios': comentario})

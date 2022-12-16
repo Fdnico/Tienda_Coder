@@ -40,7 +40,7 @@ class Comentarios(models.Model):
     usuario = models.CharField(max_length=30)
     imagen = imagen = models.ImageField(upload_to='imagen_periferico', null='True', blank='True')
     comentario = models.CharField(max_length= 150)
-    fecha = models.DateTimeField(default=timezone.now)
+    fecha = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.usuario

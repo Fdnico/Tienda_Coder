@@ -7,6 +7,7 @@ from django.contrib.auth import login, authenticate
 
 
 
+
 def acerca_de(request):
     if request.user.is_authenticated:
         if Avatar.objects.filter(user= request.user.id).order_by('-id'):

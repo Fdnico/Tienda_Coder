@@ -210,14 +210,28 @@
     <div class="card bg-light">
         <div class="card-body">
             <!-- Comment form-->
-            <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
-            <!-- Single comment-->
+            {% if request.user.is_authenticated %}
+            <form class="mb-4"><textarea class="form-control" rows="3" placeholder= "Deja tu comentario! (150)"></textarea></form>
+            <input type="submit" value="Comentar">
+
+            {% else %}
+            <!-- SI NO ESTAS LOGUEADO NO APARECE EL BOTON PARA COMENTAR PERO SI VES LOS COMENTARIOS -->
+            <form class="mb-4"><textarea class="form-control" rows="3" placeholder= "Inicia secion o registrate para comentar!"></textarea></form>
+            {% endif %}
+            <!-- MODELO DE COMENTARIO-->
             <div class="d-flex">
                 <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                <!--{% if not Comentarios.all %}
+
+                {% else %}-->
+                {% for comentario in Comentarios %}
+
                 <div class="ms-3">
-                    <div class="fw-bold">Commenter Name</div>
-                    When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                    <div class="fw-bold"> {{comentario.usuario}} - {{comentario.fecha}} </div>
+                    {{comentario.comentario}}
                 </div>
+                {% endfor %}
+                <!--{% endif %}-->
             </div>
         </div>
     </div>

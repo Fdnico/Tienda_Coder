@@ -52,3 +52,5 @@ class UserEditForm(UserCreationForm):
 
 class AvatarForm(forms.Form):
     imagen = forms.ImageField()
+
+

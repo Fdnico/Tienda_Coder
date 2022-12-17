@@ -1,7 +1,15 @@
 {% extends 'Tienda_Coder/base.html' %}
+
 {% load static %}
 
 {% block contenido %}
+<script>
+function myFunction() {
+  alert("Comentario publicado correctamente!");
+  window.location.href = "/";
+}
+</script>
+
     <body class="bg-primary">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -15,7 +23,7 @@
                                         
                                         <!-- <input type="text" name="comentario"> -->
                                         <textarea name="comentario" class="form-control" rows="3" placeholder= "Deja tu comentario! (150)"></textarea>
-                                        <input type="submit" value="Comentar!">
+                                        <input type="submit" value="Comentar!" onclick="myFunction()" href="/">
                                     </form>
                                 </div>
                             </div>
@@ -24,8 +32,6 @@
                 </main>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
     </body>
 </html>
 

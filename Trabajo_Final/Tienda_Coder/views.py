@@ -453,20 +453,20 @@ def Comentario(request):
 
     usuario = request.user.username
 
+    if Avatar.objects.filter(user= request.user.id).order_by('-id'):
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by('-id')[0]
+        imagen_url = imagen_model.imagen.url
+    else:
+        imagen_url = ''
+
     if request.method == 'POST':
         form = Comentar_Form(request.POST)
 
         if form.is_valid():
             data = form.cleaned_data
 
-            comentario = Comentarios(comentario=data['comentario'])
+            comentario = Comentarios(comentario=data['comentario'], usuario=usuario, imagen=imagen_url)
             comentario.save()
-
-    if Avatar.objects.filter(user= request.user.id).order_by('-id'):
-        imagen_model = Avatar.objects.filter(user= request.user.id).order_by('-id')[0]
-        imagen_url = imagen_model.imagen.url
-    else:
-        imagen_url = ''
 
     form = Comentar_Form()
 

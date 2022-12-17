@@ -13,9 +13,9 @@
                                     <form action="{% url 'comentar' %}" method="POST">
                                         {% csrf_token %}
                                         
-                                        <input type="text" name="comentario">
-                                        <!-- <textarea class="form-control" rows="3" placeholder= "Deja tu comentario! (150)"></textarea> -->
-                                        <input type="submit" value="Comentar">
+                                        <!-- <input type="text" name="comentario"> -->
+                                        <textarea name="comentario" class="form-control" rows="3" placeholder= "Deja tu comentario! (150)"></textarea>
+                                        <input type="submit" value="Comentar!">
                                     </form>
                                 </div>
                             </div>

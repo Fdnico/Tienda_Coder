@@ -55,7 +55,11 @@ def Vista_Perifericos(request):
 
     perifericos = Perifericos.objects.all()
 
-    return render(request, 'Tienda_Coder/perifericos.html', {'listado_perifericos': perifericos})
+    for obj in Perifericos.objects.all():
+        imagen = obj.imagen
+        codigo = obj.id
+        
+    return render(request, 'Tienda_Coder/perifericos.html', {'listado_perifericos': perifericos, 'imagen': imagen})
 
 
 def Ver_Periferico(request):

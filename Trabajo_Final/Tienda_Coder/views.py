@@ -70,24 +70,22 @@ def Ver_Periferico(request):
 @user_passes_test (lambda u: u.is_superuser)
 def Crear_Periferico(request):
 
-    errores = ''
-
     if request.method == 'POST':
-        form = Perifericos_Form(request.POST)
+        form = Perifericos_Form(request.POST, request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
 
-            periferico = Perifericos(nombre=data['nombre'], marca=data['marca'], precio=data['precio'], imagen=['imagen'])
+            periferico = Perifericos(nombre=data['nombre'], marca=data['marca'], precio=data['precio'], imagen=data['imagen'])
             periferico.save()
-        
+
+            return redirect('perifericos')
         else:
-            errores = form.errors
+            return render(request, 'Tienda_Coder/periferico_crear.html', {'form': form, 'errors': form.errors })
 
     form = Perifericos_Form()
-    contexto = {'form': form, 'errores': errores}
 
-    return render(request, 'Tienda_Coder/periferico_crear.html', contexto)
+    return render(request, 'Tienda_Coder/periferico_crear.html', {'form': form})
 
 
 def Borrar_Periferico(request, id):

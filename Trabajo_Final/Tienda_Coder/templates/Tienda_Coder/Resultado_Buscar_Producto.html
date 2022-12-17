@@ -6,3 +6,24 @@
                     <h1 class="display-4 fw-bolder">Tienda Coder</h1>
                     <p class="lead fw-normal text-white-50 mb-0">Resultados</p>
 {% endblock %}
+
+{% block contenido %}
+
+{% if producto %}
+<h2 style="color: rgb(35, 29, 117)">Producto encontrado:</h2>
+
+<p>
+    {% for producto in producto %}
+
+        <li>Nombre: {{producto.nombre}}</li>
+        <li>Precio: {{producto.precio}}</li>
+        <li>Imagen: {{producto.imagen}}</li>
+
+    {% endfor %}
+</p>
+
+{% else %}
+<h2 style="text-align: center; color: rgb(35, 29, 117)">Producto no encontrado</h2>
+{% endif %}
+
+{% endblock %}

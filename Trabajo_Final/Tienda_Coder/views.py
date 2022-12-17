@@ -8,6 +8,7 @@ from django.contrib.auth import login, authenticate
 
 
 
+
 def acerca_de(request):
     if request.user.is_authenticated:
         if Avatar.objects.filter(user= request.user.id).order_by('-id'):
@@ -450,21 +451,23 @@ def Vista_Comentarios(request):
 
 def Comentario(request):
 
-    com = request.GET['comentario']
+    usuario = request.user.username
 
-    if Avatar.objects.filter(user=request.user.id).order_by('-id'):
-        imagen_model = Avatar.objects.filter(user=request.user.id).order_by('-id')[0]
+    if request.method == 'POST':
+        form = Comentar_Form(request.POST)
+
+        if form.is_valid():
+            data = form.cleaned_data
+
+            comentario = Comentarios(comentario=data['comentario'])
+            comentario.save()
+
+    if Avatar.objects.filter(user= request.user.id).order_by('-id'):
+        imagen_model = Avatar.objects.filter(user= request.user.id).order_by('-id')[0]
         imagen_url = imagen_model.imagen.url
     else:
         imagen_url = ''
 
-    if request.method == 'GET':
-        form = Comentarios_Form(request.GET)
+    form = Comentar_Form()
 
-        if form.is_valid():
-            data = form.cleaned_data
-            
-            comentario = Comentarios(usuario=data[User], comentario=data[com], imagen=data[imagen_url])
-            comentario.save()
-
-    return render(request, 'Tienda_Coder/comentar.html', {'com': com})
+    return render(request, 'Tienda_Coder/comentar.html', {'form': form})

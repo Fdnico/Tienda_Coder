@@ -20,7 +20,7 @@ urlpatterns = [
     path('Tienda_Coder/editar_perfil/', Editar_Perfil, name='auth-perfil-editar'),
     path('Tienda_Coder/agregar_avatar/', Agregar_Avatar, name='auth-avatar'),
 
-    path('Tienda_Coder/comentar/', Comentario, name='comentario'),
+    path('Tienda_Coder/comentar/', Comentario, name='comentar'),
 
     path('Tienda_Coder/resultado_buscar_producto/', Resultado_Buscar_Producto, name='resultado_buscar_producto'),
 

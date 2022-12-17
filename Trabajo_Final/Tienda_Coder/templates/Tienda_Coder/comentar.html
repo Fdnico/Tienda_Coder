@@ -10,11 +10,11 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <form action="{% url 'comentario' %}" method="GET">
-                                        <!-- <textarea class="form-control" rows="3" placeholder= "Deja tu comentario! (150)"></textarea> -->
+                                    <form action="{% url 'comentar' %}" method="POST">
                                         {% csrf_token %}
-
-                                        Comentario: <input type='text' name='comentario'>
+                                        
+                                        <input type="text" name="comentario">
+                                        <!-- <textarea class="form-control" rows="3" placeholder= "Deja tu comentario! (150)"></textarea> -->
                                         <input type="submit" value="Comentar">
                                     </form>
                                 </div>

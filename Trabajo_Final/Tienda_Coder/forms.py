@@ -14,11 +14,13 @@ class Consolas_Form(forms.Form):
     nombre = forms.CharField()
     marca = forms.CharField()
     precio = forms.IntegerField()
+    imagen = forms.ImageField()
 
 
 class Juegos_Form(forms.Form):
     nombre = forms.CharField()
     precio = forms.IntegerField()
+    imagen = forms.ImageField()
 
 
 class Comentar_Form(forms.Form):

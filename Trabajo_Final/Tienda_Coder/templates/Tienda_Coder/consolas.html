@@ -12,8 +12,8 @@
 {% if listado_consolas %}
 <p style="text-align: center">Estas son las consolas:</p>
     <ul>
-    {% for consola in listado_consolas %} 
-        <li>consola: {{consola}} {{precio}} {% if request.user.is_superuser %}<a href="{% url 'consola_editar' consola.id %}">Editar</a><a href="{% url 'consola_borrar' consola.id %}">⚠Borrar⚠</a>{% endif %}</li>
+    {% for consola in listado_consolas %}
+        <li>Consola: {{consola.nombre}} {{consola.marca}} <img src="/media/{{consola.imagen}}" alt="..." /> {% if request.user.is_superuser %} <a href="{% url 'consola_editar' consola.id %}">Editar</a><a href="{% url 'consola_borrar' consola.id %}">⚠Borrar⚠</a> {% endif %} </li>
     {% endfor %}
     </ul>
 {% else %}

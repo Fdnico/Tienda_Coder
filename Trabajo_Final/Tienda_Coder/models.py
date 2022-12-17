@@ -8,6 +8,7 @@ class Consolas(models.Model):
     nombre = models.CharField(max_length=30)
     marca = models.CharField(max_length=20)
     precio = models.IntegerField()
+    imagen = models.ImageField(upload_to='imagen_consolas', null='True', blank='True')
 
     def __str__(self):
         return self.nombre
@@ -16,6 +17,7 @@ class Consolas(models.Model):
 class Juegos(models.Model):
     nombre = models.CharField(max_length=50)
     precio = models.IntegerField()
+    imagen = models.ImageField(upload_to='imagen_juegos', null='True', blank='True')
 
     def __str__(self):
         return self.nombre

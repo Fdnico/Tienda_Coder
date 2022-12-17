@@ -57,7 +57,6 @@ def Vista_Perifericos(request):
 
     for obj in Perifericos.objects.all():
         imagen = obj.imagen
-        codigo = obj.id
         
     return render(request, 'Tienda_Coder/perifericos.html', {'listado_perifericos': perifericos, 'imagen': imagen})
 
@@ -105,7 +104,7 @@ def Editar_Periferico(request, id):
     periferico = Perifericos.objects.get(id=id)
 
     if request.method == 'POST':
-        form = Perifericos_Form(request.POST)
+        form = Perifericos_Form(request.POST, request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
@@ -113,13 +112,14 @@ def Editar_Periferico(request, id):
             periferico.nombre = data['nombre']
             periferico.marca = data['marca']
             periferico.precio = data['precio']
+            periferico.imagen = data['imagen']
             periferico.save()
 
             return redirect('perifericos')
         else:
             return render(request, 'Tienda_Coder/periferico_editar.html', {'form': form, 'errores': form.errors})
     else:
-        form = Perifericos_Form(initial={'nombre': periferico.nombre, 'marca': periferico.marca, 'precio': periferico.precio})
+        form = Perifericos_Form(initial={'nombre': periferico.nombre, 'marca': periferico.marca, 'precio': periferico.precio, 'imagen': periferico.imagen})
         return render(request, 'Tienda_Coder/periferico_editar.html', {'form': form, 'errores': ''})
 
 
@@ -146,9 +146,12 @@ def Resultado_Buscar_Periferico(request):
 
 def Vista_Consolas(request):
 
-    consola = Consolas.objects.all()
-
-    return render(request, 'Tienda_Coder/consolas.html', {'listado_consolas': consola})
+    consolas = Consolas.objects.all()
+    
+    for obj in Consolas.objects.all():
+        imagen = obj.imagen
+        
+    return render(request, 'Tienda_Coder/consolas.html', {'listado_consolas': consolas, 'imagen': imagen})
 
 
 def Ver_Consola(request):
@@ -162,24 +165,22 @@ def Ver_Consola(request):
 
 def Crear_Consola(request):
 
-    errores = ''
-
     if request.method == 'POST':
-        form = Consolas_Form(request.POST)
+        form = Consolas_Form(request.POST, request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
 
-            consola = Consolas(nombre=data['nombre'], marca=data['marca'], precio=data['precio'])
+            consola = Consolas(nombre=data['nombre'], marca=data['marca'], precio=data['precio'], imagen=data['imagen'])
             consola.save()
-        
+
+            return redirect('consolas')
         else:
-            errores = form.errors
+            return render(request, 'Tienda_Coder/consola_crear.html', {'form': form, 'errors': form.errors })
 
     form = Consolas_Form()
-    contexto = {'form': form, 'errores': errores}
 
-    return render(request, 'Tienda_Coder/consola_crear.html', contexto)
+    return render(request, 'Tienda_Coder/consola_crear.html', {'form': form})
 
 
 def Borrar_Consola(request, id):
@@ -195,7 +196,7 @@ def Editar_Consola(request, id):
     consola = Consolas.objects.get(id=id)
 
     if request.method == 'POST':
-        form = Consolas_Form(request.POST)
+        form = Consolas_Form(request.POST, request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
@@ -203,13 +204,14 @@ def Editar_Consola(request, id):
             consola.nombre = data['nombre']
             consola.marca = data['marca']
             consola.precio = data['precio']
+            consola.imagen = data['imagen']
             consola.save()
 
             return redirect('consolas')
         else:
             return render(request, 'Tienda_Coder/consola_editar.html', {'form': form, 'errores': form.errors})
     else:
-        form = Consolas_Form(initial={'nombre': consola.nombre, 'marca': consola.marca, 'precio': consola.precio})
+        form = Consolas_Form(initial={'nombre': consola.nombre, 'marca': consola.marca, 'precio': consola.precio, 'imagen': consola.imagen})
         return render(request, 'Tienda_Coder/consola_editar.html', {'form': form, 'errores': ''})
 
 
@@ -236,9 +238,17 @@ def Resultado_Buscar_Consola(request):
 
 def Vista_Juegos(request):
 
-    juego = Juegos.objects.all()
+    juegos = Juegos.objects.all()
 
-    return render(request, 'Tienda_Coder/juegos.html', {'listado_juegos': juego})
+    if juegos:
+        for obj in Juegos.objects.all():
+            imagen = obj.imagen
+        
+        contexto = {'listado_juegos': juegos, 'imagen': imagen}
+    else:
+        contexto = {'listado_juegos': juegos}
+        
+    return render(request, 'Tienda_Coder/juegos.html', contexto)
 
 
 def Ver_Juego(request):
@@ -252,24 +262,22 @@ def Ver_Juego(request):
 
 def Crear_Juego(request):
 
-    errores = ''
-
     if request.method == 'POST':
-        form = Juegos_Form(request.POST)
+        form = Juegos_Form(request.POST, request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
 
-            juego = Juegos(nombre=data['nombre'], precio=data['precio'])
+            juego = Juegos(nombre=data['nombre'], precio=data['precio'], imagen=data['imagen'])
             juego.save()
-        
+
+            return redirect('juegos')
         else:
-            errores = form.errors
+            return render(request, 'Tienda_Coder/juego_crear.html', {'form': form, 'errors': form.errors })
 
     form = Juegos_Form()
-    contexto = {'form': form, 'errores': errores}
 
-    return render(request, 'Tienda_Coder/juego_crear.html', contexto)
+    return render(request, 'Tienda_Coder/juego_crear.html', {'form': form})
 
 
 def Borrar_Juego(request, id):
@@ -285,20 +293,21 @@ def Editar_Juego(request, id):
     juego = Juegos.objects.get(id=id)
 
     if request.method == 'POST':
-        form = Juegos_Form(request.POST)
+        form = Juegos_Form(request.POST, request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
 
             juego.nombre = data['nombre']
             juego.precio = data['precio']
+            juego.imagen = data['imagen']
             juego.save()
 
             return redirect('juegos')
         else:
             return render(request, 'Tienda_Coder/juego_editar.html', {'form': form, 'errores': form.errors})
     else:
-        form = Juegos_Form(initial={'nombre': juego.nombre, 'precio': juego.precio})
+        form = Juegos_Form(initial={'nombre': juego.nombre, 'precio': juego.precio, 'imagen': juego.imagen})
         return render(request, 'Tienda_Coder/juego_editar.html', {'form': form, 'errores': ''})
 
 

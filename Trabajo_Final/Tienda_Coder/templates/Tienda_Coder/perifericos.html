@@ -13,8 +13,7 @@
 <p style="text-align: center">Estos son los perifericos:</p>
     <ul>
     {% for periferico in listado_perifericos %}
-        <li>periferico: {{periferico.nombre}} {{periferico.marca}} <img src={{imagen.url}} alt="..." /> {% if request.user.is_superuser %} <a href="{% url 'periferico_editar' periferico.id %}">Editar</a><a href="{% url 'periferico_borrar' periferico.id %}">⚠Borrar⚠</a> {% endif %} </li>
-        <!-- <img src={{imagen}} alt="..." /> -->
+        <li>Periferico: {{periferico.nombre}} {{periferico.marca}} <img src="/media/{{periferico.imagen}}" alt="..." /> {% if request.user.is_superuser %} <a href="{% url 'periferico_editar' periferico.id %}">Editar</a><a href="{% url 'periferico_borrar' periferico.id %}">⚠Borrar⚠</a> {% endif %} </li>
     {% endfor %}
     </ul>
 {% else %}

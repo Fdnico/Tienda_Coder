@@ -1,0 +1,58 @@
+{% extends 'Tienda_Coder/base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+                  
+{% endblock %}
+
+{% block contenido %}
+
+{% if request.user.is_authenticated %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <br /><br />
+                        <img src="{{imagen_url}}" height="200" width="200" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        
+                        {% if request.user.is_superuser %}
+                        <h2>MIEMBRO DE ADMINISTRADORES</h2>
+                        <br>
+                        {% endif %}
+                        <h4>{{request.user.username}}  {{request.user.last_name}}</h4>
+
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                            <br />
+                            <br />
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>Miembro desde {{request.user.date_joined}}</p>
+                        <div class="btn-group">
+                            <a href="/Tienda_Coder/editar_perfil/"><button type="button" class="btn btn-primary" >
+                                Editar perfil</button></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+    <h1>OOPS! ¿COMO LLEGASTE ACÁ?</h1>
+    <h4>Podes <a href="/">volver al inicio</a> o mejor aun <a href="/Tienda_Coder/register/">registrarte</a> o <a href="/Tienda_Coder/login/">iniciar sesión</a> </h4>
+{% endif %}
+{% endblock %}
+
+
+
+<img  height="200px" width="200px"  alt="..." />
+    <h1>{{request.user.username}}  {{request.user.last_name}}</h1>
+    <h3>Miembro desde {{request.user.date_joined}} </h3>

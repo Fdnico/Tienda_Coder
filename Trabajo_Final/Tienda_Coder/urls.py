@@ -13,6 +13,7 @@ urlpatterns = [
     path('Tienda_Coder/acerca_de/', acerca_de, name='acerca_de'),
     path('',Vista_Comentarios, name='inicio'),
 
+    path('Tienda_Coder/perfil/', mostrar_perfil, name='auth-mostrar-perfil'),
     path('Tienda_Coder/login/', Iniciar_Sesion, name='auth_login'),
     path('Tienda_Coder/register/', Registrar_Usuario, name='registrar_usuario'),
     path('Tienda_Coder/logout/', LogoutView.as_view(template_name='Tienda_Coder/logout.html'), name='auth_logout'),

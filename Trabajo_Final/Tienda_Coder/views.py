@@ -471,3 +471,15 @@ def Comentario(request):
     form = Comentar_Form()
 
     return render(request, 'Tienda_Coder/comentar.html', {'form': form})
+
+    
+def mostrar_perfil(request):
+    if request.user.is_authenticated:
+        if Avatar.objects.filter(user= request.user.id).order_by('-id'):
+            imagen_model = Avatar.objects.filter(user= request.user.id).order_by('-id')[0]
+            imagen_url = imagen_model.imagen.url
+        else:
+            imagen_url = ''
+    else:
+        imagen_url = '' 
+    return render(request, 'Tienda_Coder/Perfil.html', {'imagen_url': imagen_url})

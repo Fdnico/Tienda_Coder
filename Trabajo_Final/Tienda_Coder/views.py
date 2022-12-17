@@ -33,56 +33,20 @@ def index(request):
     return render(request, 'Tienda_Coder/index.html', {'imagen_url': imagen_url})
 
 
+#--------------------------------------------------- PRODUCTOS ---------------------------------------------------#
+
+
 def Resultado_Buscar_Producto(request):
 
-    nombre = request.GET['nombre_producto']
+    if request.GET['nombre_producto']:
+        nombre = request.GET['nombre_producto']
+        producto = Perifericos.objects.filter(nombre__icontains = nombre)
 
-    for obj in Perifericos.objects.all():
-        if obj.nombre == nombre:
-            codigo = obj.id
-            nombre = obj.nombre
-            marca = obj.marca
-            precio = obj.precio
-
-            imagen_model = Perifericos.objects.filter(codigo)
-            imagen_url = imagen_model.imagen.url
-
-            rta = {'nombre': nombre, 'marca': marca, 'precio': precio}
-        else:
-            rta = '1'
-
-    for obj in Consolas.objects.all():
-        if obj.nombre == nombre:
-            nombre = obj.nombre
-            marca = obj.marca
-            precio = obj.precio
-
-            imagen_model = Consolas.objects.filter(codigo)
-            imagen_url = imagen_model.imagen.url
-
-            rta = {'nombre': nombre, 'marca': marca, 'precio': precio}
-        else:
-            rta = '2'
-
-    for obj in Juegos.objects.all():
-        if obj.nombre == nombre:
-            nombre = obj.nombre
-            precio = obj.precio
-
-            imagen_model = Juegos.objects.filter(codigo)
-            imagen_url = imagen_model.imagen.url
-
-            rta = {'nombre': nombre, 'precio': precio}
-        else:
-            rta = '3'
-
-    if rta == '1' or rta == '2' or rta == '3':
-        error = 'Producto no encontrado!'
-        return render(request, 'Tienda_Coder/index.hmtl', {'error': error})
+        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'producto': producto})
 
     else:
-        return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'rta': rta, 'imagen': imagen_url})
-
+        rta = 'No enviaste datos'
+        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'rta': rta})
 
 #--------------------------------------------------- PERIFERICOS ---------------------------------------------------#
 

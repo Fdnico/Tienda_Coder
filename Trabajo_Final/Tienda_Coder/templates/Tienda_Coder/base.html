@@ -38,8 +38,11 @@
                     </ul>
                     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Buscar un producto..." aria-label="Buscar un producto..." aria-describedby="btnNavbarSearch" />
-                            <a href="/Tienda_Coder/resultado_buscar_producto/"><button class="btn btn-primary" id="btnNavbarSearch" type="button" backgroundimage ><i class="fa fa-search" ></i></button></a>
+                            <form action="{% url 'resultado_buscar_producto' %}" method="GET">
+                                {% csrf_token %}
+                                <input class="form-control" type="text" name='nombre_producto' placeholder="Buscar un producto..." aria-label="Buscar un producto..." aria-describedby="btnNavbarSearch" />
+                                <input type="submit" value="Buscar!">
+                            </form>
                         </div>
                     </form>
                     {% if request.user.is_authenticated %}
@@ -53,7 +56,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 {% if request.user.is_authenticated %}
-                                <li><a class="dropdown-item" href="/Tienda_Coder/perfil/">Perfil     <i class="bi bi-pencil"></i></a></li>
+                                <li><a class="dropdown-item" href="/Tienda_Coder/perfil/">Perfil     <i class="bi bi-person-circle"></i></a></li>
                                 <li><a class="dropdown-item" href="/Tienda_Coder/editar_perfil/">Editar perfil     <i class="bi bi-pencil"></i></a></li>
                                 <li><a class="dropdown-item" href="/Tienda_Coder/agregar_avatar/">Cambiar imagen de perfil     <i class="bi bi-person-bounding-box"></i></a></li>
                                 <li><a class="dropdown-item" href="/Tienda_Coder/logout/">Cerrar sesión     <i class="bi bi-box-arrow-left"></i></a></li>

@@ -38,15 +38,34 @@ def index(request):
 
 def Resultado_Buscar_Producto(request):
 
-    if request.GET['nombre_producto']:
-        nombre = request.GET['nombre_producto']
-        producto = Perifericos.objects.filter(nombre__icontains = nombre)
+    if request.GET['item']:
+            
+        producto = Perifericos.objects.filter(nombre__icontains = request.GET['item'])
+        producto2 = Perifericos.objects.filter(marca__icontains = request.GET['item'])
+        producto3 = Consolas.objects.filter(nombre__icontains = request.GET['item'])
+        producto4 = Consolas.objects.filter(marca__icontains = request.GET['item'])
+        producto5 = Juegos.objects.filter(nombre__icontains = request.GET['item'])
 
-        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'producto': producto})
+        if producto:    
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+        elif producto2:
+            producto = Perifericos.objects.filter(marca__icontains = request.GET['item'])
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+        elif producto3:
+            producto = Consolas.objects.filter(nombre__icontains = request.GET['item'])
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+        elif producto4:
+            producto = Consolas.objects.filter(marca__icontains = request.GET['item'])
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+        elif producto5:
+            producto = Juegos.objects.filter(nombre__icontains = request.GET['item'])
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+        
 
     else:
         rta = 'No enviaste datos'
-        return render(request, 'Tienda_Coder/Resultado_Buscar_Producto.html', {'rta': rta})
+        return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'rta': rta})
+        
 
 #--------------------------------------------------- PERIFERICOS ---------------------------------------------------#
 

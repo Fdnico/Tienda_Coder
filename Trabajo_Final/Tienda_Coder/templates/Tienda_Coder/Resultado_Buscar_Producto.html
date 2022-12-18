@@ -16,8 +16,9 @@
     {% for producto in producto %}
 
         <li>Nombre: {{producto.nombre}}</li>
+        <li>Marca: {{producto.marca}}</li>
         <li>Precio: {{producto.precio}}</li>
-        <li>Imagen: {{producto.imagen}}</li>
+        <img src="/media/{{producto.imagen}}" alt="..." />
 
     {% endfor %}
 </p>
@@ -25,5 +26,5 @@
 {% else %}
 <h2 style="text-align: center; color: rgb(35, 29, 117)">Producto no encontrado</h2>
 {% endif %}
-
+<h2 style="text-align: center; color: rgb(167, 11, 11)">{{rta}}</h2>
 {% endblock %}

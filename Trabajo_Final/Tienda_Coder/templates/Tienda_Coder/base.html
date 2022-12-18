@@ -36,14 +36,15 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                        <div class="input-group">
-                            <form action="{% url 'resultado_buscar_producto' %}" method="GET">
-                                {% csrf_token %}
-                                <input class="form-control" type="text" name='nombre_producto' placeholder="Buscar un producto..." aria-label="Buscar un producto..." aria-describedby="btnNavbarSearch" />
-                                <input type="submit" value="Buscar!">
-                            </form>
-                        </div>
+                    <form style="text-align: center" action="{% url 'resultado_buscar_producto' %}" method="GET">
+    
+                        {% csrf_token %}
+                    
+                        <p>
+                            Buscar: <input type='text' name='item'>
+                            <input type="submit" value="Buscar!">
+                        </p>
+                    
                     </form>
                     {% if request.user.is_authenticated %}
                         <p class="small text-muted mb-4 mb-lg-0">Hola {{request.user.username}}!</p>
@@ -94,6 +95,7 @@
                 </div>
             </div>
         </header>
+        
         {% block contenido %}
 
         {% endblock %}

@@ -169,6 +169,14 @@ padding-bottom: 1%;
   max-height: 300px;
 }
 
+.galeria {
+  margin-left: 16%;
+  margin-right: 14%;
+}
+
+.intento {
+  max-width: fit-content;
+}
 
 body {
   padding-bottom: 70px;
@@ -984,9 +992,9 @@ progress {
 }
 
 .g-4,
-.gx-4 {
+. {
   --bs-gutter-x: 1.5rem;
-}
+}gx-4
 
 .g-4,
 .gy-4 {
@@ -4629,6 +4637,7 @@ textarea.form-control-lg {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  
 }
 .card > hr {
   margin-right: 0;

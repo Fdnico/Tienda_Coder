@@ -3,15 +3,11 @@
 {% load static %}
 
 {% block contenido %}
+<br>
 <section class="mb-5 container">
     <div class="card bg-light">
-        <div class="card-body">
-            <!-- Comment form-->
-            <!-- SI NO ESTAS LOGUEADO NO APARECE EL BOTON PARA COMENTAR PERO SI VES LOS COMENTARIOS -->
-            <!-- MODELO DE COMENTARIO -->
-            
+        <div class="card-body">        
             <h2> Comentarios</h2> <br>
-                
             {% for coment in listado_comentarios %}
             <div class="d-flex marco">
                 <div class="flex-shrink-0"><img class="rounded-circle imagen-padding" height="50px" width="50px" src="{{coment.imagen}}" alt="..." /></div>

@@ -7,10 +7,11 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div class="col mb-5">
+                <h2>Perifericos Destacados!</h2>
                     <div class="card h-100">
-                            <!-- Product image-->
+                    
                             {% for p in perifericos_d %}
-                            <img class="card-img-top" width="450px" height="300px"  src="/media/{{p.imagen}}" alt="..." />
+                            <img class="card-img-top" max-width="450px" max-height="300px"  src="/media/{{p.imagen}}" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -19,20 +20,24 @@
                                     <h5 class="fw-bolder">{{p.marca}}</h5>
                                     <!-- Product price-->
                                     <span>$ {{p.precio}}</span>
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="text-center"><a href="/Tienda_Coder/periferico_ver/{{p.id}}/" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a href="{% url 'consola_ver' 1 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                            </div>
+                            
                             {% endfor %}
+                            
+                            
                     </div>
             </div>
             <div class="col mb-5">
+                <h2>Consolas Destacadas!</h2>
                 <div class="card h-100">
                         <!-- Product image-->
                         {% for c in consolas_d %}
-                        <img class="card-img-top" width="450px" height="300px"  src="/media/{{c.imagen}}" alt="..." />
+                        <img class="card-img-top" max-width="450px" max-height="300px"  src="/media/{{c.imagen}}" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -41,20 +46,22 @@
                                 <h5 class="fw-bolder">{{c.marca}}</h5>
                                 <!-- Product price-->
                                 <span>$ {{c.precio}}</span>
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center"><a href="/Tienda_Coder/consola_ver/{{c.id}}/" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
+                                </div>
                             </div>
                         </div>
                         <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a href="{% url 'consola_ver' 1 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                        </div>
+                        
                         {% endfor %}
                 </div>
             </div>
                 <div class="col mb-5">
+                    <h2>Juegos Destacados!</h2>
                     <div class="card h-100">
                             <!-- Product image-->
                             {% for j in juegos_d %}
-                            <img class="card-img-top" width="450px" height="300px"  src="/media/{{j.imagen}}" alt="..." />
+                            <img class="card-img-top" max-width="450px" max-height="300px"  src="/media/{{j.imagen}}" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -63,18 +70,20 @@
                                     <h5 class="fw-bolder">{{j.marca}}</h5>
                                     <!-- Product price-->
                                     <span>$ {{j.precio}}</span>
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="text-center"><a href="/Tienda_Coder/juego_ver/{{j.id}}/" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a href="{% url 'consola_ver' 1 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                            </div>
+                            
                             {% endfor %}
                     </div>
             </div>
         </div>
     </div>
 </section>
+<br><br>
 
 
 

@@ -111,6 +111,42 @@ footer {
   
 }
 
+.alineado {
+
+  margin-top: 2%;
+  margin-left: 10%;
+}
+
+.imagen-padding {
+  margin-top: 20%;
+  border-style: dashed;
+  border-color: #212529;
+  border-width: 2px;
+}
+
+.fondo {
+  background-color: #d3d6d8;
+}
+
+
+.boton-comentarios {
+  
+  margin-left: 80%;
+  margin-bottom: 5%;
+}
+
+.marco {
+border-style: solid;
+border-color: #3a3a3a;
+border-width: 1px;
+border-radius: 0%;
+margin-left: 5%;
+margin-right: 5%;
+padding-left: 3%;
+padding-right: 3%;
+
+}
+
 body {
   padding-bottom: 70px;
   margin: 0;

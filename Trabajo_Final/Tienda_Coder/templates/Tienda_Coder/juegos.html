@@ -9,33 +9,44 @@
 
 {% block contenido %}
 
+{% if request.user.is_superuser %}
+
+<a class="btn btn-primary alineado" href="/Tienda_Coder/juego_crear/">Agregar videojuego</a>
+
+{% endif %}
+
 {% if listado_juegos %}
 <p style="text-align: center">Estos son los juegos:</p>
     <ul>
     {% for juego in listado_juegos %}
-        <li>Juego: {{juego.nombre}} {{juego.marca}} <img src="/media/{{juego.imagen}}" alt="..." /> {% if request.user.is_superuser %} <a href="{% url 'juego_editar' juego.id %}">Editar</a><a href="{% url 'juego_borrar' juego.id %}">⚠Borrar⚠</a> {% endif %} </li>
-    {% endfor %}
+        <!--<li>Juego: {{juego.nombre}} {{juego.marca}} <img height="100px" width="100xp" src="/media/{{juego.imagen}}" alt="..." /> {% if request.user.is_superuser %} <a href="{% url 'juego_editar' juego.id %}">Editar</a><a href="{% url 'juego_borrar' juego.id %}">⚠Borrar⚠</a> {% endif %} </li>-->
+        <div class="job-box d-md-flex align-items-center justify-content-between mb-30 marco">
+            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                    <img height="100px" width="100xp" src="/media/{{juego.imagen}}" alt="..." />
+                </div>
+                <div class="job-content">
+                    <h5 class="text-center text-md-left">{{juego.nombre}} </h5>
+                    <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                        <li class="mr-md-4">
+                            <i class="zmdi zmdi-pin mr-2">{{juego.marca}}</i> 
+                            <i class="zmdi zmdi-money mr-2"></i> $  {{juego.precio}}
+                            <br>
+                            {% if request.user.is_superuser %} <a href="{% url 'juego_editar' juego.id %}"> <button type="submit">Editar</button></a> <a href="{% url 'juego_borrar' juego.id %}"><button type="submit">⚠Borrar⚠</button></a> {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="job-right my-4 flex-shrink-0">
+                <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">VER ARTICULO</a>
+            </div>
+        </div>
+    </div>
+    <br>
+        {% endfor %}
     </ul>
 {% else %}
     <p>En este momento no hay juegos en stock</p>
-{% endif %}
-
-{% if request.user.is_superuser %}
-
-<section class="features-icons bg-light text-center">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-4">
-                <nav class="navbar navbar-light bg-light static-top">
-                    <div class="container">
-                        <a class="btn btn-primary" href="/Tienda_Coder/juego_crear/">Agregar videojuego</a>
-                    </div>
-                </nav>
-            </div>                    
-        </div>
-    </div>
-</section>
-
 {% endif %}
 
 {% endblock %}

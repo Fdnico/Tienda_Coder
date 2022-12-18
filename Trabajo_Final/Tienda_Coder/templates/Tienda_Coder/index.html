@@ -227,25 +227,24 @@
             <!-- {% endif %} -->
             <!-- MODELO DE COMENTARIO -->
             
+            <h2> Comentarios</h2> <br>
                 
-                {% for coment in listado_comentarios %}
-                <div class="d-flex">
-                    <div class="flex-shrink-0"><img class="rounded-circle" height="50px" width="50px" src="{{coment.imagen}}" alt="..." /></div>
-                <div class="ms-3">
-                    <div class="fw-bold"><h2> {{coment.usuario}} - {{coment.fecha}} </h2>  </div>
-                    <p> {{coment.comentario}} </p>
-                </div>
-                </div>
-                
-                {% endfor %}
+            {% for coment in listado_comentarios %}
+            <div class="d-flex marco">
+                <div class="flex-shrink-0"><img class="rounded-circle imagen-padding" height="50px" width="50px" src="{{coment.imagen}}" alt="..." /></div>
+            <div class="ms-3">
+                <div class="fw-bold"><p> {{coment.usuario}} - {{coment.fecha}} </p>  </div>
+                <h5> {{coment.comentario}} </h5>
             </div>
-            {% if request.user.is_authenticated %}
-            <a href='/Tienda_Coder/comentar/'/>Comentar</a>
-            {% endif %}
-                <!--https://dummyimage.com/50x50/ced4da/6c757d.jpg-->
-                
-            
-    </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div class="alineado">
+        {% if request.user.is_authenticated %}
+        <div class="boton-comentarios">
+            <a href='/Tienda_Coder/comentar/'> <button type="submit">Comentar</button></a>
+        </div>
+        {% endif %}
 </section>
 
 

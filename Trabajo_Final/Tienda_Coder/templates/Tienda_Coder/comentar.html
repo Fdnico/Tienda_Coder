@@ -11,30 +11,16 @@ function myFunction() {
 </script>
 
     <body class="bg-primary">
-        <div class="comentar">
-            <body class="bg-primary">
-                <div id="layoutAuthentication">
-                    <div id="layoutAuthentication_content">
-                        <main>
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-5">
-                                        <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                            <form action="{% url 'comentar' %}" method="POST">
-                                                {% csrf_token %}
-                                                
-                                                <!-- <input type="text" name="comentario"> -->
-                                                <textarea name="comentario" class="form-control" rows="3" placeholder= "Deja tu comentario! (150)"></textarea>
-                                                <input type="submit" value="Comentar!" onclick="myFunction()" href="/">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </main>
-                    </div>
-                </div>
-            </div>
+        <div class="fromularios fondo">
+            <form action="{% url 'comentar' %}" method="POST">
+                {% csrf_token %}
+                
+                <!-- <input type="text" name="comentario"> -->
+                <textarea name="comentario" class="form-control" rows="3" placeholder= "Deja tu comentario! (150)"></textarea>
+                <br>
+                <input type="submit" value="Comentar!" onclick="myFunction()" href="/"> <br>
+            </form>
+        </div>
     </body>
 </html>
 

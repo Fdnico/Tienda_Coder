@@ -20,15 +20,14 @@
                         <img src="{{imagen_url}}" height="200" width="200" alt="" class="img-rounded img-responsive" />
                     </div>
                     <div class="col-sm-6 col-md-8">
-                        
+                        <br>
                         {% if request.user.is_superuser %}
                         <h2>MIEMBRO DE ADMINISTRADORES</h2>
                         <br>
                         {% endif %}
                         <h4>{{request.user.username}}  {{request.user.last_name}}</h4>
-
                         <p>
-                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                            <i class="glyphicon glyphicon-envelope"></i>{{request.user.email}}
                             <br />
                             <br />
                             <br />

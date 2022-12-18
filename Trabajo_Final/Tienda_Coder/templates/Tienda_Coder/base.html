@@ -36,15 +36,13 @@
                             </ul>
                         </li>
                     </ul>
-                    <form style="text-align: center" action="{% url 'resultado_buscar_producto' %}" method="GET">
-    
-                        {% csrf_token %}
-                    
-                        <p>
-                            Buscar: <input type='text' name='item'>
-                            <input type="submit" value="Buscar!">
-                        </p>
-                    
+                    <div class="busqueda">
+                        <form  action="{% url 'resultado_buscar_producto' %}" method="GET">
+                            {% csrf_token %}
+                            <p>
+                                <input type="submit" value="Buscar!"><input type='text' name='item' placeholder= "Buscar...">
+                            </p>
+                        </div>
                     </form>
                     {% if request.user.is_authenticated %}
                         <p class="small text-muted mb-4 mb-lg-0">Hola {{request.user.username}}!</p>

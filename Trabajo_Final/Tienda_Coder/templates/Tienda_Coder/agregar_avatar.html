@@ -14,13 +14,16 @@
     <p style="color:red">{{errors}}</p>
 {% endif %}
 
-<form method="post" enctype="multipart/form-data">
-    <div class="fromularios">
-    {% csrf_token %}
-
-    {{ form.as_p }}
-    <input type="submit" value="Guardar">
+<div class="fromularios">
+    <form method="post" enctype="multipart/form-data">
+        <h3>Cambia tu foto de perfil!</h3>
+        {% csrf_token %}
+    
+        {{ form.as_p }}
+        <br><br>
+        <input type="submit" value="Guardar">
+       <br>
+    </form>
     </div>
-</form>
-
-{% endblock %}
+    
+    {% endblock %}

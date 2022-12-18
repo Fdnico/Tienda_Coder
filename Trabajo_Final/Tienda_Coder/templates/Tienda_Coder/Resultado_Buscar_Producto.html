@@ -14,12 +14,28 @@
 
 <p>
     {% for producto in producto %}
-
-        <li>Nombre: {{producto.nombre}}</li>
-        <li>Marca: {{producto.marca}}</li>
-        <li>Precio: {{producto.precio}}</li>
-        <img src="/media/{{producto.imagen}}" alt="..." />
-
+    <div class="job-box d-md-flex align-items-center justify-content-between mb-30 marco">
+        <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+            <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                <img height="100px" width="100xp" src="/media/{{producto.imagen}}" alt="..." />
+            </div>
+            <div class="job-content">
+                <h5 class="text-center text-md-left">{{producto.nombre}} </h5>
+                <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                    <li class="mr-md-4">
+                        <i class="zmdi zmdi-pin mr-2">{{producto.marca}}</i> 
+                        <i class="zmdi zmdi-money mr-2"></i> $  {{producto.precio}}
+                        <br>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="job-right my-4 flex-shrink-0">
+            <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">VER ARTICULO</a>
+        </div>
+    </div>
+</div>
+<br>
     {% endfor %}
 </p>
 

@@ -15,9 +15,42 @@ function myFunction() {
     window.location.href = "/";
 }
 </script>
-    
-<li>juego: {{juego.nombre}} {{juego.marca}} <img src="/media/{{juego.imagen}}" alt="..." /></li>
-<div class="job-right my-4 flex-shrink-0">
-    <a href="{% url 'juego_ver' juego.id %}" class="btn d-block w-100 d-sm-inline-block btn-light" onclick="myFunction()">RESERVAR</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 foto_art">
+            <br /><br />
+            <img class="foto_art" src="/media/{{juego.imagen}}" height="400" width="400" alt="" />
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm"><br><br>  
+                <div class="row marco">  
+                    <div class="col-sm-6 col-md-8">            
+                        <br>
+                        {% if request.user.is_superuser %} <a href="{% url 'juego_editar' consola.id %}"><button type="submit">Editar</button></a>  <a href="{% url 'juego_borrar' consola.id %}"><button type="submit">⚠Borrar⚠</button></a> {% endif %}
+                        <br>
+
+                        <h4>{{juego.nombre}}</h4>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{juego.marca}}
+                            <br />
+                            <br />
+                            $  {{juego.precio}}
+                        </p>
+                            <br />
+                            <br />
+                        <div class="btn-group">
+                            <a href="{% url 'juego_ver' juego.id %}" class="btn d-block w-100 d-sm-inline-block btn-light" onclick="myFunction()">RESERVAR</a><br><br><br><br> 
+                            <!--<a href="/Tienda_Coder/editar_perfil/"><button type="button" class="btn btn-primary">Editar consola</button></a>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
 {% endblock %}

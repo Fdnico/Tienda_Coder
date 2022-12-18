@@ -80,13 +80,11 @@ def Vista_Perifericos(request):
     return render(request, 'Tienda_Coder/perifericos.html', {'listado_perifericos': perifericos, 'imagen': imagen})
 
 
-def Ver_Periferico(request):
+def Ver_Periferico(request, id):
 
-    if request.GET['nombre_periferico']:
-        nombre = request.GET['nombre_periferico']
-        periferico = Perifericos.objects.filter(nombre__icontains = nombre)
+    periferico = Perifericos.objects.get(id=id)
 
-    return render(request, 'Tienda_Coder/periferico_ver.html')
+    return render(request, 'Tienda_Coder/periferico_ver.html', {'periferico': periferico})
 
 
 @user_passes_test (lambda u: u.is_superuser)
@@ -173,13 +171,11 @@ def Vista_Consolas(request):
     return render(request, 'Tienda_Coder/consolas.html', {'listado_consolas': consolas, 'imagen': imagen})
 
 
-def Ver_Consola(request):
+def Ver_Consola(request, id):
 
-    if request.GET['nombre_consola']:
-        nombre = request.GET['nombre_consola']
-        consola = Consolas.objects.filter(nombre__icontains = nombre)
+    consola = Consolas.objects.get(id=id)
 
-    return render(request, 'Tienda_Coder/consola_ver.html')
+    return render(request, 'Tienda_Coder/consola_ver.html', {'consola': consola})
 
 
 def Crear_Consola(request):
@@ -270,13 +266,11 @@ def Vista_Juegos(request):
     return render(request, 'Tienda_Coder/juegos.html', contexto)
 
 
-def Ver_Juego(request):
+def Ver_Juego(request, id):
 
-    if request.GET['nombre_juego']:
-        nombre = request.GET['nombre_juego']
-        juego = Juegos.objects.filter(nombre__icontains = nombre)
+    juego = Juegos.objects.get(id=id)
 
-    return render(request, 'Tienda_Coder/juego_ver.html')
+    return render(request, 'Tienda_Coder/juego_ver.html', {'juego': juego})
 
 
 def Crear_Juego(request):

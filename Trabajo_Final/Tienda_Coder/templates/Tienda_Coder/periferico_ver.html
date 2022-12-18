@@ -6,3 +6,18 @@
                     <h1 class="display-4 fw-bolder">Tienda Coder</h1>
                     <p class="lead fw-normal text-white-50 mb-0">Perifericos</p>
 {% endblock %}
+
+{% block contenido %}
+
+<script>
+function myFunction() {
+    alert("Agregado al carrito!");
+    window.location.href = "/";
+}
+</script>
+    
+<li>Periferico: {{periferico.nombre}} {{periferico.marca}} <img src="/media/{{periferico.imagen}}" alt="..." /></li>
+<div class="job-right my-4 flex-shrink-0">
+    <a href="{% url 'periferico_ver' periferico.id %}" class="btn d-block w-100 d-sm-inline-block btn-light" onclick="myFunction()">RESERVAR</a>
+</div>
+{% endblock %}

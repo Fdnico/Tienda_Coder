@@ -442,7 +442,7 @@ def Vista_Comentarios(request):
 
     comentario = Comentarios.objects.all()
 
-    return render(request, 'Tienda_Coder/index.html', {'listado_comentarios': comentario})
+    return render(request, 'Tienda_Coder/comentarios.html', {'listado_comentarios': comentario})
 
 
 def Comentario(request):

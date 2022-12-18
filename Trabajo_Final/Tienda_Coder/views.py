@@ -37,6 +37,15 @@ def index(request):
 #--------------------------------------------------- PRODUCTOS ---------------------------------------------------#
 
 
+def Destacados(request):
+
+    perifericos_d = Perifericos.objects.filter(destacado=1)
+    consolas_d = Consolas.objects.filter(destacado=1)
+    juegos_d = Juegos.objects.filter(destacado=1)
+
+    return render(request, 'Tienda_Coder/index.html', {'perifericos_d': perifericos_d, 'consolas_d': consolas_d, 'juegos_d': juegos_d})
+
+
 def Resultado_Buscar_Producto(request):
 
     if request.GET['item']:
@@ -104,7 +113,7 @@ def Crear_Periferico(request):
         if form.is_valid():
             data = form.cleaned_data
 
-            periferico = Perifericos(nombre=data['nombre'], marca=data['marca'], precio=data['precio'], imagen=data['imagen'])
+            periferico = Perifericos(nombre=data['nombre'], marca=data['marca'], precio=data['precio'], imagen=data['imagen'], destacado=data['destacado'])
             periferico.save()
 
             return redirect('perifericos')
@@ -138,13 +147,14 @@ def Editar_Periferico(request, id):
             periferico.marca = data['marca']
             periferico.precio = data['precio']
             periferico.imagen = data['imagen']
+            periferico.destacado = data['destacado']
             periferico.save()
 
             return redirect('perifericos')
         else:
             return render(request, 'Tienda_Coder/periferico_editar.html', {'form': form, 'errores': form.errors})
     else:
-        form = Perifericos_Form(initial={'nombre': periferico.nombre, 'marca': periferico.marca, 'precio': periferico.precio, 'imagen': periferico.imagen})
+        form = Perifericos_Form(initial={'nombre': periferico.nombre, 'marca': periferico.marca, 'precio': periferico.precio, 'imagen': periferico.imagen, 'destacado': periferico.destacado})
         return render(request, 'Tienda_Coder/periferico_editar.html', {'form': form, 'errores': ''})
 
 
@@ -194,7 +204,7 @@ def Crear_Consola(request):
         if form.is_valid():
             data = form.cleaned_data
 
-            consola = Consolas(nombre=data['nombre'], marca=data['marca'], precio=data['precio'], imagen=data['imagen'])
+            consola = Consolas(nombre=data['nombre'], marca=data['marca'], precio=data['precio'], imagen=data['imagen'], destacado=data['destacado'])
             consola.save()
 
             return redirect('consolas')
@@ -228,13 +238,14 @@ def Editar_Consola(request, id):
             consola.marca = data['marca']
             consola.precio = data['precio']
             consola.imagen = data['imagen']
+            consola.destacado = data['destacado']
             consola.save()
 
             return redirect('consolas')
         else:
             return render(request, 'Tienda_Coder/consola_editar.html', {'form': form, 'errores': form.errors})
     else:
-        form = Consolas_Form(initial={'nombre': consola.nombre, 'marca': consola.marca, 'precio': consola.precio, 'imagen': consola.imagen})
+        form = Consolas_Form(initial={'nombre': consola.nombre, 'marca': consola.marca, 'precio': consola.precio, 'imagen': consola.imagen, 'destacado': consola.destacado})
         return render(request, 'Tienda_Coder/consola_editar.html', {'form': form, 'errores': ''})
 
 
@@ -289,7 +300,7 @@ def Crear_Juego(request):
         if form.is_valid():
             data = form.cleaned_data
 
-            juego = Juegos(nombre=data['nombre'], precio=data['precio'], imagen=data['imagen'])
+            juego = Juegos(nombre=data['nombre'], precio=data['precio'], imagen=data['imagen'], destacado=data['destacado'])
             juego.save()
 
             return redirect('juegos')
@@ -322,13 +333,14 @@ def Editar_Juego(request, id):
             juego.nombre = data['nombre']
             juego.precio = data['precio']
             juego.imagen = data['imagen']
+            juego.destacado = data['destacado']
             juego.save()
 
             return redirect('juegos')
         else:
             return render(request, 'Tienda_Coder/juego_editar.html', {'form': form, 'errores': form.errors})
     else:
-        form = Juegos_Form(initial={'nombre': juego.nombre, 'precio': juego.precio, 'imagen': juego.imagen})
+        form = Juegos_Form(initial={'nombre': juego.nombre, 'precio': juego.precio, 'imagen': juego.imagen, 'destacado': juego.destacado})
         return render(request, 'Tienda_Coder/juego_editar.html', {'form': form, 'errores': ''})
 
 

@@ -9,162 +9,68 @@
             <div class="col mb-5">
                     <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" width="450px" height="300px"  src="\media\imagen_consolas\20311.webp" alt="..." />
+                            {% for p in perifericos_d %}
+                            <img class="card-img-top" width="450px" height="300px"  src="/media/{{p.imagen}}" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Polystation</h5>
+                                    <h5 class="fw-bolder">{{p.nombre}}</h5>
+                                    <h5 class="fw-bolder">{{p.marca}}</h5>
                                     <!-- Product price-->
-                                    <span>$ 5</span>
+                                    <span>$ {{p.precio}}</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a href="{% url 'consola_ver' 1 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
                             </div>
+                            {% endfor %}
                     </div>
             </div>
             <div class="col mb-5">
                 <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute"></div>
-                    <!-- Product image-->
-                    <img class="card-img-top" width="450px" height="300px" src="\media\imagen_periferico\D_NQ_NP_935185-MLA46504064329_062021-O_hroTQe6.webp" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Teclado Redrogon</h5>
-                            <!-- Product price-->
-                            <span >$150</span>
+                        <!-- Product image-->
+                        {% for c in consolas_d %}
+                        <img class="card-img-top" width="450px" height="300px"  src="/media/{{c.imagen}}" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{c.nombre}}</h5>
+                                <h5 class="fw-bolder">{{c.marca}}</h5>
+                                <!-- Product price-->
+                                <span>$ {{c.precio}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a href="{% url 'periferico_ver' 6 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                    </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a href="{% url 'consola_ver' 1 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
+                        </div>
+                        {% endfor %}
                 </div>
             </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute"></div>
-                    <!-- Product image-->
-                    <img class="card-img-top" width="450px" height="300px"  src="\media\imagen_periferico\1539800974_rhrh.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Auriculares Hyper-X</h5>
-                            <!-- Product price-->
-                            <span>$120</span>  
-                        </div>
+                <div class="col mb-5">
+                    <div class="card h-100">
+                            <!-- Product image-->
+                            {% for j in juegos_d %}
+                            <img class="card-img-top" width="450px" height="300px"  src="/media/{{j.imagen}}" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">{{j.nombre}}</h5>
+                                    <h5 class="fw-bolder">{{j.marca}}</h5>
+                                    <!-- Product price-->
+                                    <span>$ {{j.precio}}</span>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a href="{% url 'consola_ver' 1 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
+                            </div>
+                            {% endfor %}
                     </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a href="{% url 'periferico_ver' 9 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" width="450px" height="300px"  src="\media\imagen_periferico\Wheel_mouse.jpeg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder"> Mouse</h5>
-                            <!-- Product price-->
-                            $10
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a href="{% url 'periferico_ver' 8 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute"></div>
-                    <!-- Product image-->
-                    <img class="card-img-top" width="450px" height="300px"  src="\media\imagen_consolas\family.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Nientiendo 46</h5>
-                            <!-- Product price-->
-                            <span>$100</span>
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a href="{% url 'consola_ver' 14 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" width="450px" height="300px"  src="\media\imagen_periferico\tdmr_control_polystation_00.jpg" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Polystation mando</h5>
-                            <!-- Product price-->
-                            $100
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a href="{% url 'periferico_ver' 10 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute"></div>
-                    <!-- Product image-->
-                    <img class="card-img-top" width="450px" height="300px"  src="\media\imagen_periferico\2UN30AA-1_T1638827506.webp" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Teclado HP</h5>
-                            <!-- Product price-->
-                            <span>$150</span>
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a href="{% url 'periferico_ver' 7 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top"width="450px" height="300px"  src="\media\imagen_juegos\Car3Ftula_GTA_V_y8jDcPi.webp" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder"> GTA V</h5>
-                            <!-- Product price-->
-                            $150
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a href="{% url 'juego_ver' 3 %}" class="btn btn-outline-dark mt-auto">VER ARTICULO</a></div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

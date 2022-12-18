@@ -9,6 +9,7 @@ class Consolas(models.Model):
     marca = models.CharField(max_length=20)
     precio = models.IntegerField()
     imagen = models.ImageField(upload_to='imagen_consolas', null='True', blank='True')
+    destacado = models.IntegerField()
 
     def __str__(self):
         return self.nombre
@@ -18,6 +19,7 @@ class Juegos(models.Model):
     nombre = models.CharField(max_length=50)
     precio = models.IntegerField()
     imagen = models.ImageField(upload_to='imagen_juegos', null='True', blank='True')
+    destacado = models.IntegerField()
 
     def __str__(self):
         return self.nombre
@@ -28,6 +30,7 @@ class Perifericos(models.Model):
     marca = models.CharField(max_length=20)
     precio = models.IntegerField()
     imagen = models.ImageField(upload_to='imagen_periferico', null='True', blank='True')
+    destacado = models.IntegerField()
     
 
 class Avatar(models.Model):

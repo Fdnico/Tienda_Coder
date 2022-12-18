@@ -27,7 +27,7 @@ function myFunction() {
                 <div class="row marco">  
                     <div class="col-sm-6 col-md-8">            
                         <br>
-                        {% if request.user.is_superuser %} <a href="{% url 'juego_editar' consola.id %}"><button type="submit">Editar</button></a>  <a href="{% url 'juego_borrar' consola.id %}"><button type="submit">⚠Borrar⚠</button></a> {% endif %}
+                        {% if request.user.is_superuser %} <a href="{% url 'juego_editar' juego.id %}"><button type="submit">Editar</button></a>  <a href="{% url 'juego_borrar' juego.id %}"><button type="submit">⚠Borrar⚠</button></a> {% endif %}
                         <br>
 
                         <h4>{{juego.nombre}}</h4>

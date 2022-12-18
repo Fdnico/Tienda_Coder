@@ -8,6 +8,7 @@ class Perifericos_Form(forms.Form):
     marca = forms.CharField()
     precio = forms.IntegerField()
     imagen = forms.ImageField()
+    destacado = forms.IntegerField(max_value=1, min_value=0)
 
 
 class Consolas_Form(forms.Form):
@@ -15,12 +16,14 @@ class Consolas_Form(forms.Form):
     marca = forms.CharField()
     precio = forms.IntegerField()
     imagen = forms.ImageField()
+    destacado = forms.IntegerField(max_value=1, min_value=0)
 
 
 class Juegos_Form(forms.Form):
     nombre = forms.CharField()
     precio = forms.IntegerField()
     imagen = forms.ImageField()
+    destacado = forms.IntegerField(max_value=1, min_value=0)
 
 
 class Comentar_Form(forms.Form):

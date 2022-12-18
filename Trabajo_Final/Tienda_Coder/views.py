@@ -60,7 +60,9 @@ def Resultado_Buscar_Producto(request):
         elif producto5:
             producto = Juegos.objects.filter(nombre__icontains = request.GET['item'])
             return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
-        
+        elif not producto:
+            rta = 'No se encontro ningun producto'
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'rta': rta})
 
     else:
         rta = 'No enviaste datos'

@@ -42,8 +42,8 @@
                             <p>
                                 <input type="submit" value="Buscar!"><input type='text' name='item' placeholder= "Buscar...">
                             </p>
-                        </div>
                     </form>
+                </div>
                     {% if request.user.is_authenticated %}
                         <p class="small text-muted mb-4 mb-lg-0">Hola {{request.user.username}}!</p>
                     {% endif %}

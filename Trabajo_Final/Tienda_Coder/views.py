@@ -4,6 +4,7 @@ from Tienda_Coder.models import *
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
+from django.http import JsonResponse
 
 
 
@@ -46,20 +47,25 @@ def Resultado_Buscar_Producto(request):
         producto4 = Consolas.objects.filter(marca__icontains = request.GET['item'])
         producto5 = Juegos.objects.filter(nombre__icontains = request.GET['item'])
 
-        if producto:    
-            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+        if producto:
+            tipo = "periferico"
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto, 'tipo':tipo})
         elif producto2:
             producto = Perifericos.objects.filter(marca__icontains = request.GET['item'])
-            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+            tipo = "periferico"
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto, 'tipo':tipo})
         elif producto3:
             producto = Consolas.objects.filter(nombre__icontains = request.GET['item'])
-            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+            tipo = "consola"
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto, 'tipo':tipo})
         elif producto4:
             producto = Consolas.objects.filter(marca__icontains = request.GET['item'])
-            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+            tipo = "consola"
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto, 'tipo':tipo})
         elif producto5:
             producto = Juegos.objects.filter(nombre__icontains = request.GET['item'])
-            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto})
+            tipo = "juego"
+            return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'producto': producto, 'tipo':tipo})
         elif not producto:
             rta = 'No se encontro ningun producto'
             return render(request, 'Tienda_Coder/resultado_buscar_producto.html', {'rta': rta})
@@ -473,3 +479,5 @@ def mostrar_perfil(request):
     else:
         imagen_url = '' 
     return render(request, 'Tienda_Coder/Perfil.html', {'imagen_url': imagen_url})
+
+

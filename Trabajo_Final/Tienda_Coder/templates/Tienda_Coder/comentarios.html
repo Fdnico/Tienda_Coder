@@ -8,6 +8,9 @@
     <div class="card bg-light">
         <div class="card-body">        
             <h2> Comentarios</h2> <br>
+            {% if not listado_comentarios %}
+            <h3>Aún no hay comentarios.......</h3>
+            {% endif %}
             {% for coment in listado_comentarios %}
             <div class="d-flex marco">
                 <div class="flex-shrink-0"><img class="rounded-circle imagen-padding" height="50px" width="50px" src="{{coment.imagen}}" alt="..." /></div>

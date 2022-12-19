@@ -43,14 +43,9 @@ def Destacados(request):
     consolas_d = Consolas.objects.filter(destacado=1)
     juegos_d = Juegos.objects.filter(destacado=1)
 
-    if perifericos_d or consolas_d or juegos_d:
-        return render(request, 'Tienda_Coder/index.html', {'perifericos_d': perifericos_d, 'consolas_d': consolas_d, 'juegos_d': juegos_d})
-    else:
-        rta = "Oops!"
-        return render(request, 'Tienda_Coder/index.html', {'rta': rta})
+    rta = 'Jaja XD'
 
-
-    
+    return render(request, 'Tienda_Coder/index.html', {'rta': rta, 'perifericos_d': perifericos_d, 'consolas_d': consolas_d, 'juegos_d': juegos_d})
 
 
 def Resultado_Buscar_Producto(request):

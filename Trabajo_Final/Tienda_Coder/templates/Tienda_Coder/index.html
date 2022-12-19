@@ -8,8 +8,8 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div class="col mb-5">
                 <h2>Perifericos Destacados!</h2>
+                {% if perifericos_d %}
                     <div class="card h-100">
-                    
                             {% for p in perifericos_d %}
                             <img class="card-img-top" max-width="450px" max-height="300px"  src="/media/{{p.imagen}}" alt="..." />
                             <!-- Product details-->
@@ -25,12 +25,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Product actions-->
-                            
                             {% endfor %}
-                            
-                            
                     </div>
+                {% else %}
+                    {{rta}}
+                {% endif %}
             </div>
             <div class="col mb-5">
                 <h2>Consolas Destacadas!</h2>
